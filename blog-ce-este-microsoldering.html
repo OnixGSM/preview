@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ce este microsoldering-ul? Ghid simplu | OnixGSM</title>
+    <meta name="description" content="Ce înseamnă microsoldering? Cum funcționează reparațiile la nivel de componentă pe placa de bază și de ce puține service-uri din zona Florești-Cluj le pot face.">
+    <meta name="keywords" content="microsoldering romania, reparatie placa de baza telefon, ce inseamna microsoldering, microsoldering cluj, reparatii placa de baza, board level repair, recuperare date telefon mort">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Ce este microsoldering-ul? Reparații imposibile, posibile.">
+    <meta property="og:description" content="Microsoldering-ul salvează telefoane moarte, console cu HDMI ars și plăci de bază distruse de apă. Află ce este și unde găsești acest serviciu în România.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://onixgsm.ro/blog-ce-este-microsoldering.html">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:image" content="https://onixgsm.ro/assets/img/hero-onix.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://onixgsm.ro/blog-ce-este-microsoldering.html">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/claymorphism.css?v=1">
+    <link rel="icon" type="image/png" href="assets/img/icon-192.png">
+    <link rel="preload" as="image" href="assets/img/microsolder-3.jpg" fetchpriority="high">
+    <script>(function(){var t=localStorage.getItem('onix-theme');if(t)document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add('js');})()</script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Ce este microsoldering-ul? Reparații imposibile, posibile.",
+        "description": "Ce înseamnă microsoldering? Cum funcționează reparațiile la nivel de componentă pe placa de bază și de ce majoritatea service-urilor nu pot face asta.",
+        "author": {
+            "@type": "Organization",
+            "name": "OnixGSM"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "OnixGSM",
+            "url": "https://onixgsm.ro"
+        },
+        "datePublished": "2026-05-29",
+        "dateModified": "2026-05-29",
+        "mainEntityOfPage": "https://onixgsm.ro/blog-ce-este-microsoldering.html",
+        "keywords": "microsoldering romania, reparatie placa de baza telefon, ce inseamna microsoldering"
+    }
+    </script>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#211E2E">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+    <link rel="preload" href="assets/fonts/fraunces-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://onixgsm.ro/"},{"@type":"ListItem","position":2,"name":"Ce este microsoldering","item":"https://onixgsm.ro/blog-ce-este-microsoldering.html"}]}</script>
+</head>
+<body class="clay-page">
+    <a class="skip-link" href="#continut">Sari la conținut</a>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="assets/img/logo-hero.jpg" alt="OnixGSM" class="navbar-logo"></a>
+        <span class="status-badge" id="statusBadge"></span>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Meniu"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="service.html" id="navRep" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reparații</a>
+                    <ul class="dropdown-menu" aria-labelledby="navRep">
+                        <li><a class="dropdown-item" href="reparatii-iphone.html">Reparații iPhone</a></li>
+                        <li><a class="dropdown-item" href="reparatii-samsung.html">Reparații Samsung</a></li>
+                        <li><a class="dropdown-item" href="microsoldering-cluj.html">Microsoldering</a></li>
+                        <li><a class="dropdown-item" href="curier.html">Reparații prin curier</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="service.html#configurator">Configurator preț</a></li>
+                        <li><a class="dropdown-item" href="service.html">Toate prețurile</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="telefoane.html">Telefoane</a></li>
+                <li class="nav-item"><a class="nav-link" href="accesorii.html">Accesorii</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="garantie.html" id="navGhid" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ghiduri</a>
+                    <ul class="dropdown-menu" aria-labelledby="navGhid">
+                        <li><a class="dropdown-item" href="blog-telefon-cazut-in-apa.html">Telefon căzut în apă</a></li>
+                        <li><a class="dropdown-item" href="blog-piese-originale-vs-compatibile.html">Piese originale vs. compatibile</a></li>
+                        <li><a class="dropdown-item" href="blog-ce-este-microsoldering.html">Ce este microsoldering</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="garantie.html">Garanție & retur</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle ms-lg-2" aria-label="Schimbă tema" title="Schimbă tema">
+                <i class="bi bi-sun-fill theme-icon-light"></i>
+                <i class="bi bi-moon-stars-fill theme-icon-dark"></i>
+            </button>
+            <a href="tel:0750605905" class="btn btn-accent ms-lg-3"><i class="bi bi-telephone-fill"></i> Sună Acum</a>
+        </div>
+    </div>
+</nav>
+<main id="continut" tabindex="-1">
+
+    <!-- PAGE HEADER -->
+    <section class="page-header" style="background: linear-gradient(rgba(12,14,22,0.85), rgba(12,14,22,0.95)), url('assets/img/microsolder-3.jpg') center/cover no-repeat;">
+        <div class="container text-center">
+            <h1 class="display-4 fw-900 reveal">Ce este <span class="text-accent">microsoldering</span>-ul?</h1>
+            <p class="lead text-muted reveal">Reparații imposibile, posibile. Cum salvăm dispozitive pe care alții le declară moarte.</p>
+        </div>
+    </section>
+
+    <!-- ARTICLE CONTENT -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+
+                    <article class="reveal">
+                        <p class="lead mb-4">Ai fost vreodată la un service cu telefonul mort și ți s-a spus: <em>„Nu se poate repara, trebuie să-ți iei altul"</em>? Dacă da, probabil că service-ul respectiv nu oferă <strong>microsoldering</strong>. Și aici intervenim noi.</p>
+
+                        <h2 class="fw-800 mt-5 mb-3">Ce înseamnă microsoldering, pe scurt?</h2>
+                        <p><strong>Microsoldering-ul</strong> (sau <em>board-level repair</em>) este o tehnică avansată de reparație electronică în care tehnicianul lucrează direct pe <strong>placa de bază</strong> a unui dispozitiv, sub microscop profesional, cu instrumente de precizie și stații de lipit specializate.</p>
+                        <p>Placa de bază a telefonului e plină de componente mai mici decât un bob de orez — condensatoare, rezistențe, chipuri. Se strică una, din cauza apei, a unei supratensiuni sau a uzurii, și telefonul moare. Un service obișnuit nu poate ajunge până acolo: n-are nici microscopul, nici pregătirea.</p>
+                        <p>Microsoldering-ul înseamnă să identifici exact componenta defectă, să o desolderezi (dezlipești) cu aer cald controlat la fracțiuni de grad, și să montezi una nouă — totul sub un microscop cu mărire de 10-45x. Vorbim despre piese de 0.3 mm pe care nu le poți vedea cu ochiul liber.</p>
+
+                        <h2 class="fw-800 mt-5 mb-3">Ce dispozitive pot fi salvate prin microsoldering?</h2>
+                        <p>Cam orice are o placă electronică: telefoane, console, laptopuri. Concret:</p>
+
+                        <div class="row g-3 my-4">
+                            <div class="col-md-6">
+                                <div class="info-card h-100">
+                                    <h5><i class="bi bi-phone text-accent"></i> Telefoane moarte</h5>
+                                    <p class="text-muted small mb-0">iPhone, Samsung, Huawei, Xiaomi — telefoane care nu mai pornesc, nu mai încarcă, sau au fost declarate „ireparabile" de alte service-uri. Reparăm circuite de alimentare, IC-uri de charging, backlight, audio și baseband.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-card h-100">
+                                    <h5><i class="bi bi-droplet text-primary"></i> Daune provocate de lichide</h5>
+                                    <p class="text-muted small mb-0">Apa nu distruge telefonul instant — produce coroziune care atacă componentele în timp. Prin microsoldering, identificăm și înlocuim exact piesele afectate, în loc să aruncăm toată placa.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-card h-100">
+                                    <h5><i class="bi bi-controller text-success"></i> Console gaming — HDMI PS4, PS5, Xbox</h5>
+                                    <p class="text-muted small mb-0">Portul HDMI de pe PS5 sau Xbox se rupe surprinzător de ușor. Înlocuirea lui necesită demontarea completă și lipirea unui conector nou cu zeci de pini microscopici. Este una dintre cele mai cerute reparații de microsoldering.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-card h-100">
+                                    <h5><i class="bi bi-laptop text-warning"></i> Laptopuri și MacBook-uri</h5>
+                                    <p class="text-muted small mb-0">Plăci de bază de laptop cu scurtcircuit, chipset-uri defecte, circuite de alimentare arse. În loc să înlocuiești toată placa (500-1500 EUR), repari doar componenta defectă.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2 class="fw-800 mt-5 mb-3">De ce majoritatea service-urilor NU pot face microsoldering?</h2>
+                        <p>Nu e vorba de lene sau incompetență. Este vorba de <strong>bariera de intrare</strong>, care este imensă:</p>
+                        <ul class="mb-4">
+                            <li class="mb-2"><strong>Echipament scump:</strong> Un microscop profesional trinocular, o stație de aer cald cu control digital al temperaturii, o stație de lipit cu vârfuri speciale, un multimetru de precizie, o cameră termică, un preheater — vorbim de investiții de mii de euro doar pentru echipamentul de bază.</li>
+                            <li class="mb-2"><strong>Ani de pregătire:</strong> Nu poți învăța microsoldering dintr-un curs de weekend. Este nevoie de sute de ore de practică pe plăci reale, cunoștințe solide de electronică, și experiență acumulată din sute de cazuri reale. Este o meserie care se învață în ani, nu în zile.</li>
+                            <li class="mb-2"><strong>Acces la scheme electrice:</strong> Fără schemele tehnice ale plăcii (board schematics), nu poți diagnostica eficient. Accesul la aceste resurse este limitat și costisitor.</li>
+                            <li class="mb-2"><strong>Risc ridicat:</strong> O greșeală de o fracțiune de milimetru poate distruge iremediabil placa. Presiunea este uriașă — lucrezi pe dispozitivul unui client, adesea singurul loc unde se află pozele copiilor sau datele firmei.</li>
+                        </ul>
+                        <p>Din aceste motive, din zona Florești, <strong>OnixGSM este unul dintre puținele service-uri care oferă microsoldering</strong>. Nu spunem asta ca să ne lăudăm — este pur și simplu un fapt. Am investit în echipament, în pregătire, și în experiență, tocmai pentru a putea oferi servicii pe care altfel ar trebui să le cauți în orașele mari din străinătate.</p>
+
+                        <h2 class="fw-800 mt-5 mb-3">Genul de probleme pe care le rezolvăm des</h2>
+
+                        <div class="info-card mb-4">
+                            <h5 class="fw-bold"><i class="bi bi-heart-pulse text-accent"></i> Telefon care nu mai pornește</h5>
+                            <p class="text-muted">Multe telefoane ajunse la noi cu verdictul „placa e arsă" au de fapt o singură componentă defectă pe linia de alimentare. O găsim sub microscop, o înlocuim, și de multe ori telefonul pornește — cu pozele și mesajele exact unde le-ai lăsat. Recuperarea datelor nu reușește de fiecare dată, dar de cele mai multe ori da.</p>
+                        </div>
+
+                        <div class="info-card mb-4">
+                            <h5 class="fw-bold"><i class="bi bi-droplet-half text-primary"></i> Placă de bază după contact cu apă</h5>
+                            <p class="text-muted">Apa nu distruge telefonul pe loc — lasă coroziune care atacă placa zile întregi. Facem deoxidare cu ultrasunete și înlocuim doar componentele corodate, în loc să schimbăm tot telefonul. Cu cât îl aduci mai repede, cu atât șansele sunt mai mari.</p>
+                        </div>
+
+                        <div class="info-card mb-4">
+                            <h5 class="fw-bold"><i class="bi bi-display text-success"></i> Consolă fără imagine pe TV (HDMI)</h5>
+                            <p class="text-muted">PS4, PS5 sau Xbox care pornesc dar nu mai dau imagine pe TV — de obicei e portul HDMI rupt, cu pini îndoiți. Îl scoatem cu aer cald, curățăm pad-urile și lipim un port nou, în loc să trimiți consola la producător și să aștepți săptămâni.</p>
+                        </div>
+
+                        <h2 class="fw-800 mt-5 mb-3">Reparații prin curier — din toată România</h2>
+                        <p>Nu locuiești în Florești sau Cluj? Nu e nicio problemă. Oferim <strong>reparații de microsoldering prin curier</strong> din orice colț al României. Trimiți dispozitivul prin curier, facem diagnosticul gratuit, te contactăm cu prețul exact, și ți-l trimitem înapoi reparat. Simplu.</p>
+                        <p>De ce să cauți „<strong>microsoldering România</strong>" și să trimiți telefonul în altă țară, când poți avea același nivel de expertiză aici, cu comunicare în limba română și termen de livrare de câteva zile?</p>
+
+                        <h2 class="fw-800 mt-5 mb-3">Cât costă?</h2>
+                        <p>Prețurile depind de complexitatea intervenției. Orientativ:</p>
+                        <ul class="mb-4">
+                            <li><strong>Reparație placă de bază telefon:</strong> de la 299 lei</li>
+                            <li><strong>Reparație HDMI PS5:</strong> 529 lei</li>
+                            <li><strong>Reparație HDMI PS4:</strong> 189 lei</li>
+                            <li><strong>Recuperare date telefon:</strong> de la 449 lei</li>
+                            <li><strong>Reballing chipset:</strong> de la 429 lei</li>
+                        </ul>
+                        <p>Consultă <a href="service.html" class="text-accent fw-bold">pagina completă de prețuri service</a> pentru toate tarifele, sau contactează-ne direct pentru un preț exact.</p>
+
+                    </article>
+
+                    <!-- CTA -->
+                    <div class="info-card text-center p-4 mt-5 reveal">
+                        <h3 class="fw-800 mb-3">Ai un dispozitiv „mort" pe care alții nu-l pot repara?</h3>
+                        <p class="text-muted mb-4">Trimite-ne un mesaj pe WhatsApp cu o descriere a problemei. Diagnosticul este <strong>GRATUIT</strong>, iar dacă nu putem repara — nu plătești nimic.</p>
+                        <div class="d-flex flex-wrap justify-content-center gap-3">
+                            <a href="tel:0750605905" class="btn btn-accent btn-lg px-4"><i class="bi bi-telephone-fill"></i> 0750 605 905</a>
+                            <a href="https://wa.me/40750605905?text=Bun%C4%83%2C%20am%20un%20dispozitiv%20care%20nu%20func%C8%9Bioneaz%C4%83.%20Face%C8%9Bi%20microsoldering%3F" class="btn btn-outline-light btn-lg px-4" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+                            <a href="service.html" class="btn btn-outline-light btn-lg px-4"><i class="bi bi-tools"></i> Vezi Prețuri</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-4 reveal"><h2 class="section-title d-inline-block">Citește și</h2></div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4 reveal"><a href="blog-telefon-cazut-in-apa.html" class="text-decoration-none"><div class="clay-card h-100"><h3 class="h6">Telefonul a căzut în apă?</h3><p class="mb-2 small">Pașii critici și ce să NU faci.</p><span class="clay-price">Citește →</span></div></a></div>
+                <div class="col-md-6 col-lg-4 reveal"><a href="blog-piese-originale-vs-compatibile.html" class="text-decoration-none"><div class="clay-card h-100"><h3 class="h6">Originale vs. compatibile</h3><p class="mb-2 small">Ce să alegi și cât costă.</p><span class="clay-price">Citește →</span></div></a></div>
+                <div class="col-md-6 col-lg-4 reveal"><a href="service.html#configurator" class="text-decoration-none"><div class="clay-card h-100"><h3 class="h6">Vezi prețul reparației</h3><p class="mb-2 small">Configurează-ți reparația într-un minut.</p><span class="clay-price">Configurator →</span></div></a></div>
+            </div>
+            <div class="text-center mt-4 reveal"><a href="microsoldering-cluj.html" class="clay-btn clay-btn--primary"><i class="bi bi-cpu"></i> Serviciul de microsoldering</a> <a href="https://wa.me/40750605905" target="_blank" rel="noopener" class="clay-btn clay-btn--ghost"><i class="bi bi-whatsapp"></i> Întreabă-ne</a></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+</main>
+    <footer class="clay-footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 footer-brand">
+                    <img src="assets/img/logo-hero.jpg" alt="OnixGSM" style="height:34px;border-radius:6px" class="mb-2"><br>
+                    <small>ONIX GSM S.R.L.<br>CUI 52504930 · J12/6979/2025<br>Str. Eroilor 17, ROKA Premium Center<br>Florești, jud. Cluj<br>L-V: 10:00–20:00 · TVA inclus</small>
+                    <div class="anpc-badges">
+                        <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener"><i class="bi bi-shield-check"></i> SAL-ANPC</a>
+                        <a href="tel:0219551"><i class="bi bi-telephone"></i> ANPC 021 9551</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h6>Reparații</h6>
+                    <ul>
+                        <li><a href="reparatii-iphone.html">Reparații iPhone</a></li>
+                        <li><a href="reparatii-samsung.html">Reparații Samsung</a></li>
+                        <li><a href="microsoldering-cluj.html">Microsoldering</a></li>
+                        <li><a href="curier.html">Reparații prin curier</a></li>
+                        <li><a href="service.html#configurator">Configurator preț</a></li>
+                        <li><a href="service.html">Toate prețurile</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h6>Magazin</h6>
+                    <ul>
+                        <li><a href="telefoane.html">Telefoane noi & SH</a></li>
+                        <li><a href="accesorii.html">Accesorii</a></li>
+                        <li><a href="index.html#contact">Cere ofertă</a></li>
+                    </ul>
+                    <h6 class="mt-3">Locații</h6>
+                    <ul>
+                        <li><a href="service-gsm-floresti.html">Service GSM Florești</a></li>
+                        <li><a href="reparatii-telefoane-cluj.html">Reparații Cluj</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h6>Ghiduri</h6>
+                    <ul>
+                        <li><a href="blog-telefon-cazut-in-apa.html">Telefon căzut în apă</a></li>
+                        <li><a href="blog-piese-originale-vs-compatibile.html">Originale vs. compatibile</a></li>
+                        <li><a href="blog-ce-este-microsoldering.html">Ce e microsoldering</a></li>
+                    </ul>
+                    <h6 class="mt-3">Companie</h6>
+                    <ul>
+                        <li><a href="garantie.html">Garanție & retur</a></li>
+                        <li><a href="confidentialitate.html">Confidențialitate</a></li>
+                        <li><a href="termeni.html">Termeni</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <small>&copy; 2026 ONIX GSM S.R.L. — Prețuri cu TVA inclus.</small>
+                <div>
+                    <a href="tel:0750605905" class="me-3"><i class="bi bi-telephone-fill"></i> 0750 605 905</a>
+                    <a href="https://wa.me/40750605905" target="_blank" rel="noopener" class="me-3" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    <a href="mailto:contact@onixgsm.ro" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/40750605905?text=Bun%C4%83%2C%20am%20o%20%C3%AEntrebare%20despre%20microsoldering" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+    <div class="sticky-cta d-lg-none"><a href="tel:0750605905" class="btn btn-accent w-100"><i class="bi bi-telephone-fill"></i> Sună: 0750 605 905</a></div>
+
+    <!-- Cookie Notice -->
+    <div class="cookie-notice" id="cookieNotice">
+        <span>Acest site nu folosește cookie-uri de tracking. <a href="confidentialitate.html">Detalii</a></span>
+        <button id="cookieAccept">Am înțeles</button>
+    </div>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Înapoi sus" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="bi bi-chevron-up"></i></button>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

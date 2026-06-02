@@ -1,0 +1,29 @@
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+
+# CONFIDENTIAL - never push to GitHub
+_bmad-output/
+_bmad/
+.claude/
+PRETURI_REPARATII_2026.md
+OnixGSM_Analiza_Competitiva.md
+*.private.md
+*.private.md
+tabel-*.md
+PRETURI_PIESE_*.md
+comparatie-*.md
+preturi-interne.html
+admin-tool/
+STATUS.md
+variante/
+PROMPTURI-IMAGINI.md
+PLAN-*.md
+clay-preview.html
+
+# Internal scratch / design / tooling (never publish)
+design-system/
+.tools/
+MASTER-*.md
+_bmad-output/

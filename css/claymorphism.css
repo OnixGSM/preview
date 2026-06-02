@@ -1,0 +1,704 @@
+/* ============================================================
+   OnixGSM — Claymorphism layer (skeleton)
+   Vesel / 3D / floating. Se folosește pe zonele "shop/accesorii/CTA".
+   Service/prețuri/legal rămân pe stilul curat existent (hibrid).
+   Tot vanilla CSS, performant (transform/opacity), reduced-motion safe.
+   ============================================================ */
+
+:root {
+  /* paletă happy + brand (de calibrat cu pozele 3D) */
+  --clay-bg:        #FBF6EE;   /* fundal cald cream */
+  --clay-bg-2:      #F1E9DC;   /* fundal puțin mai adânc */
+  --clay-surface:   #FFFDF8;   /* card */
+  --clay-amber:     #C49A4A;   /* accent principal (auriu/amber) */
+  --clay-amber-2:   #9C7322;
+  --clay-mint:      #4E8A80;   /* accent secundar (teal-mint) */
+  --clay-mint-2:    #3E776E;
+  --clay-coral:     #B97C62;   /* pop jucăuș opțional */
+  --clay-ink:       #2B2A3A;   /* text închis (contrast WCAG ok) */
+  --clay-ink-soft:  #565073;   /* contrast WCAG mai bun pe cream */
+
+  --clay-r:     28px;   /* carduri chunky */
+  --clay-r-sm:  18px;
+  --clay-r-pill: 999px;
+
+  /* "rețeta" de umbră clay: outer soft + inner highlight */
+  --clay-shadow:
+    10px 10px 24px rgba(43,42,58,.10),
+    -8px -8px 20px rgba(255,255,255,.85),
+    inset 3px 3px 6px rgba(255,255,255,.75),
+    inset -5px -5px 12px rgba(43,42,58,.06);
+  --clay-shadow-hover:
+    16px 20px 38px rgba(43,42,58,.16),
+    -8px -8px 20px rgba(255,255,255,.9),
+    inset 3px 3px 6px rgba(255,255,255,.75),
+    inset -5px -5px 12px rgba(43,42,58,.06);
+  --clay-shadow-sm:
+    6px 6px 14px rgba(43,42,58,.10),
+    -5px -5px 12px rgba(255,255,255,.8),
+    inset 2px 2px 4px rgba(255,255,255,.7),
+    inset -3px -3px 7px rgba(43,42,58,.05);
+}
+
+/* ---- secțiune happy ---- */
+.clay-section {
+  background: linear-gradient(180deg, var(--clay-bg) 0%, var(--clay-bg-2) 100%);
+  color: var(--clay-ink);
+  position: relative;
+  overflow: hidden;
+}
+.clay-section h1, .clay-section h2, .clay-section h3,
+.clay-section h4, .clay-section h5 { color: var(--clay-ink); }
+.clay-section .clay-muted { color: var(--clay-ink-soft); }
+
+/* blobs decorative de fundal (foarte subtile) */
+.clay-blob {
+  position: absolute; border-radius: 50%; filter: blur(8px);
+  opacity: .45; z-index: 0; pointer-events: none;
+}
+.clay-blob--amber { background: radial-gradient(circle at 35% 35%, #D8BB7C, #C49A4A); }
+.clay-blob--mint  { background: radial-gradient(circle at 35% 35%, #86B5AC, #4E8A80); }
+
+/* ---- CARD clay ---- */
+.clay-card {
+  background: var(--clay-surface);
+  border-radius: var(--clay-r);
+  box-shadow: var(--clay-shadow);
+  padding: 1.5rem;
+  color: var(--clay-ink);
+  position: relative; z-index: 1;
+  transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s ease;
+  will-change: transform;
+}
+.clay-card:hover { transform: translateY(-8px); box-shadow: var(--clay-shadow-hover); }
+.clay-card h3 { font-weight: 800; font-size: 1.15rem; margin-bottom: .4rem; }
+.clay-card p  { color: var(--clay-ink-soft); font-size: .92rem; margin-bottom: .75rem; }
+.clay-card .clay-price { color: var(--clay-amber-2); font-weight: 800; }
+
+/* zonă imagine în card (placeholder până vin pozele 3D) */
+.clay-imgwrap {
+  border-radius: var(--clay-r-sm);
+  aspect-ratio: 3 / 2; overflow: hidden;
+  display: grid; place-items: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(145deg, #FFF6E6, #EFE7FF);
+  box-shadow: inset 4px 4px 10px rgba(43,42,58,.06), inset -4px -4px 10px rgba(255,255,255,.7);
+}
+.clay-imgwrap img { width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .4s ease; }
+.clay-card:hover .clay-imgwrap img { transform: translateY(-4px) scale(1.03); }
+
+/* ---- ICON blob (înlocuiește cercurile plate) ---- */
+.clay-icon {
+  width: 60px; height: 60px; border-radius: 20px;
+  display: grid; place-items: center; font-size: 1.55rem;
+  box-shadow: var(--clay-shadow-sm); flex: 0 0 auto;
+}
+.clay-icon--amber { background: linear-gradient(145deg,#D8BB7C,#B98B3C); color:#5a3d05; }
+.clay-icon--mint  { background: linear-gradient(145deg,#86B5AC,#4F9389); color:#04443c; }
+.clay-icon--coral { background: linear-gradient(145deg,#CDA08F,#B97C62); color:#5e1c12; }
+
+/* ---- BUTON "pressable" ---- */
+.clay-btn {
+  border: none; border-radius: var(--clay-r-pill);
+  padding: .85rem 1.7rem; font-weight: 700; font-size: 1rem;
+  cursor: pointer; display: inline-flex; align-items: center; gap: .5rem;
+  text-decoration: none; line-height: 1;
+  transition: transform .14s ease, box-shadow .14s ease, filter .14s ease;
+}
+.clay-btn--primary {
+  background: linear-gradient(145deg,#C9A152,#A6802C); color: #1a1300;
+  box-shadow: 6px 6px 14px rgba(224,148,31,.35), -4px -4px 10px rgba(255,255,255,.7),
+    inset 2px 2px 4px rgba(255,255,255,.55), inset -3px -3px 6px rgba(180,110,10,.28);
+}
+.clay-btn--mint {
+  background: linear-gradient(145deg,#7DB1A8,#3E776E); color: #022a23;
+  box-shadow: 6px 6px 14px rgba(33,181,162,.3), -4px -4px 10px rgba(255,255,255,.7),
+    inset 2px 2px 4px rgba(255,255,255,.5), inset -3px -3px 6px rgba(10,120,108,.25);
+}
+.clay-btn--ghost {
+  background: var(--clay-surface); color: var(--clay-ink);
+  box-shadow: var(--clay-shadow-sm);
+}
+.clay-btn:hover  { transform: translateY(-2px); filter: brightness(1.03); }
+.clay-btn:active { transform: translateY(1px) scale(.985);
+  box-shadow: inset 4px 4px 10px rgba(0,0,0,.18), inset -2px -2px 6px rgba(255,255,255,.4); }
+.clay-btn:focus-visible { outline: 3px solid var(--clay-mint); outline-offset: 3px; }
+
+/* ---- CHIP / badge ---- */
+.clay-chip {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: var(--clay-surface); color: var(--clay-ink);
+  border-radius: var(--clay-r-pill); padding: .45rem 1rem;
+  font-weight: 700; font-size: .85rem; box-shadow: var(--clay-shadow-sm);
+}
+.clay-chip i { color: var(--clay-amber-2); }
+
+/* ---- QUICK-ACCESS bar ("totul la îndemână din prima") ---- */
+.clay-quickbar { display: flex; gap: 1rem; flex-wrap: wrap; }
+.clay-quick {
+  flex: 1 1 160px; min-width: 140px;
+  background: var(--clay-surface); border-radius: var(--clay-r-sm);
+  box-shadow: var(--clay-shadow-sm); padding: 1rem 1.1rem;
+  display: flex; align-items: center; gap: .8rem; text-decoration: none;
+  color: var(--clay-ink); font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.clay-quick:hover { transform: translateY(-4px); box-shadow: var(--clay-shadow); color: var(--clay-ink); }
+.clay-quick small { display: block; font-weight: 500; color: var(--clay-ink-soft); font-size: .78rem; }
+
+/* ---- FLOATING image (hero / accente 3D) ---- */
+.clay-float-img { display: block; max-width: 100%; height: auto;
+  filter: drop-shadow(0 28px 40px rgba(43,42,58,.18)); }
+
+/* ---- ANIMAȚII (subtile, GPU) ---- */
+@keyframes clayFloat { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
+@keyframes clayFloatSlow { 0%,100%{ transform: translateY(0) rotate(0); } 50%{ transform: translateY(-8px) rotate(1.5deg); } }
+.clay-anim       { animation: clayFloat 5s ease-in-out infinite; }
+.clay-anim--slow { animation: clayFloatSlow 7s ease-in-out infinite; }
+.clay-anim--delay{ animation-delay: 1.2s; }
+
+/* ---- step numbers (cum funcționează) ---- */
+.clay-step-num {
+  width: 54px; height: 54px; border-radius: 18px; flex: 0 0 auto;
+  display: grid; place-items: center; font-weight: 900; font-size: 1.5rem;
+  background: linear-gradient(145deg,#D8BB7C,#B98B3C); color:#5a3d05;
+  box-shadow: var(--clay-shadow-sm);
+}
+
+/* ---- accesibilitate: respectă reduced-motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .clay-anim, .clay-anim--slow { animation: none !important; }
+  .clay-card, .clay-quick, .clay-btn, .clay-imgwrap img { transition: none !important; }
+}
+
+/* ---- page-level (homepage clay) ---- */
+.clay-page { background: var(--clay-bg); }
+.clay-page #particleCanvas { display: none; }
+
+/* titluri/text închis pe secțiunile clay (bate tema dark) */
+.clay-page .clay-section :is(h1,h2,h3,h4,h5,h6) { color: var(--clay-ink) !important; }
+.clay-page .clay-section .text-accent { color: var(--clay-accent-text) !important; }
+
+/* navbar: bar închis solid pe pagina clay (altfel link-urile albe dispar pe cream) */
+.clay-page #mainNav { background: #211E2E !important; box-shadow: 0 6px 24px rgba(43,42,58,.15); }
+.clay-page #mainNav .nav-link { color: rgba(255,255,255,.82) !important; }
+.clay-page #mainNav .nav-link:hover { color: #fff !important; }
+
+/* siguranță: dacă JS-ul de reveal nu rulează, conținutul clay rămâne vizibil */
+.no-js .clay-section .reveal, .clay-section.clay-show .reveal { opacity: 1 !important; transform: none !important; }
+
+/* ---- formular pe clay (light) ---- */
+.clay-section .form-control, .clay-section .form-select {
+  background: var(--clay-surface); border: none; color: var(--clay-ink);
+  border-radius: var(--clay-r-sm); padding: .8rem 1rem;
+  box-shadow: inset 4px 4px 8px rgba(43,42,58,.06), inset -4px -4px 8px rgba(255,255,255,.75);
+}
+.clay-section .form-control::placeholder { color: #a59fbb; }
+.clay-section .form-control:focus, .clay-section .form-select:focus {
+  outline: none; box-shadow: inset 2px 2px 6px rgba(43,42,58,.08), 0 0 0 3px rgba(47,208,188,.35);
+}
+.clay-section label, .clay-section .form-check-label { color: var(--clay-ink-soft); }
+
+/* ---- accordion pe clay (light) ---- */
+.clay-section .accordion { --bs-accordion-bg: transparent; --bs-accordion-border-color: transparent; }
+.clay-section .accordion-item {
+  background: var(--clay-surface) !important; border: none !important;
+  border-radius: var(--clay-r-sm) !important; margin-bottom: .8rem;
+  box-shadow: var(--clay-shadow-sm); overflow: hidden;
+}
+.clay-section .accordion-button { background: var(--clay-surface) !important; color: var(--clay-ink) !important; font-weight: 700; box-shadow: none !important; }
+.clay-section .accordion-button:not(.collapsed) { color: var(--clay-amber-2) !important; background: var(--clay-surface) !important; }
+.clay-section .accordion-button::after { filter: none; }
+.clay-section .accordion-button:focus { box-shadow: 0 0 0 3px rgba(47,208,188,.3); }
+.clay-section .accordion-body { color: var(--clay-ink-soft); }
+.clay-section .accordion-body a, .clay-section a.clay-textlink { color: var(--clay-amber-2); font-weight: 700; text-decoration: none; }
+
+/* ---- price mini-card ---- */
+.clay-pill { text-align: center; padding: 1.3rem 1rem; }
+.clay-pill i { font-size: 1.7rem; color: var(--clay-amber-2); }
+.clay-pill h5 { font-weight: 700; font-size: .95rem; margin: .5rem 0 .2rem; color: var(--clay-ink); }
+.clay-pill .clay-price { font-size: .85rem; color: var(--clay-ink-soft); }
+.clay-pill .clay-price strong { font-size: 1.5rem; color: var(--clay-amber-2); }
+
+/* ============================================================
+   TEMĂ DE PAGINĂ (orice .clay-page) + CONFIGURATOR clay
+   (permite tematizarea service.html fără a rescrie structura)
+   ============================================================ */
+.clay-page :is(h1,h2,h3,h4,h5,h6) { color: var(--clay-ink) !important; }
+.clay-page .text-muted { color: var(--clay-ink-soft) !important; }
+.clay-page .text-accent { color: var(--clay-accent-text) !important; }
+.clay-page .bg-darker { background: var(--clay-bg-2) !important; }
+.clay-page .page-header { background: linear-gradient(135deg, #FFE7BE 0%, #E9F7F2 100%) !important; }
+.clay-page .page-header h1, .clay-page .page-header p, .clay-page .page-header .text-muted { color: var(--clay-ink) !important; }
+.clay-page .info-card { background: var(--clay-surface) !important; border: none !important; box-shadow: var(--clay-shadow-sm); color: var(--clay-ink); backdrop-filter: none; }
+.clay-page .info-card p, .clay-page .info-card .text-muted { color: var(--clay-ink-soft) !important; }
+.clay-page .form-control, .clay-page .form-select {
+  background: var(--clay-surface); border: none; color: var(--clay-ink); border-radius: var(--clay-r-sm); padding: .8rem 1rem;
+  box-shadow: inset 4px 4px 8px rgba(43,42,58,.06), inset -4px -4px 8px rgba(255,255,255,.75);
+}
+.clay-page .btn-outline-light { color: var(--clay-ink) !important; border-color: rgba(43,42,58,.18) !important; }
+.clay-page .btn-outline-light:hover { background: var(--clay-surface) !important; color: var(--clay-ink) !important; }
+
+/* --- Configurator --- */
+.clay-page .cfg-wrap { background: var(--clay-surface); border-radius: var(--clay-r); box-shadow: var(--clay-shadow); padding: 1.5rem; }
+.clay-page .cfg-step-label { display: inline-block; background: linear-gradient(145deg,#D8BB7C,#B98B3C); color:#5a3d05; font-weight: 800; padding: .3rem .95rem; border-radius: var(--clay-r-pill); font-size: .78rem; box-shadow: var(--clay-shadow-sm); margin-bottom: .6rem; }
+.clay-page .cfg-brand-btn { background: var(--clay-surface); border: none; border-radius: var(--clay-r-sm); box-shadow: var(--clay-shadow-sm); color: var(--clay-ink); font-weight: 700; padding: .7rem 1.1rem; transition: transform .15s ease, box-shadow .15s ease; }
+.clay-page .cfg-brand-btn:hover { transform: translateY(-3px); box-shadow: var(--clay-shadow); }
+.clay-page .cfg-brand-btn.is-active { background: linear-gradient(145deg,#C49A4A,#9C7322); color: #3a2a05; box-shadow: inset 3px 3px 7px rgba(180,110,10,.28), inset -2px -2px 6px rgba(255,255,255,.5); }
+.clay-page .cfg-part { background: var(--clay-surface); border: none; border-radius: var(--clay-r-sm); box-shadow: var(--clay-shadow-sm); transition: transform .18s ease, box-shadow .18s ease; }
+.clay-page .cfg-part:hover { transform: translateY(-3px); box-shadow: var(--clay-shadow); }
+.clay-page .cfg-part.is-selected { box-shadow: 0 0 0 3px var(--clay-mint), var(--clay-shadow-sm); }
+.clay-page .cfg-part-icon { color: var(--clay-amber-2); }
+.clay-page .cfg-part-name { color: var(--clay-ink); }
+.clay-page .cfg-part-note { color: var(--clay-ink-soft); }
+.clay-page .cfg-part-price { color: var(--clay-amber-2); font-weight: 800; }
+.clay-page .cfg-summary { background: linear-gradient(160deg, var(--clay-surface), #FFF6E9); border-radius: var(--clay-r); box-shadow: var(--clay-shadow); color: var(--clay-ink); }
+.clay-page .cfg-lines, .clay-page .cfg-line, .clay-page .cfg-disclaimer, .clay-page .cfg-hint, .clay-page .cfg-trust span, .clay-page .cfg-check { color: var(--clay-ink-soft); }
+.clay-page .cfg-line { border-color: rgba(43,42,58,.08) !important; }
+.clay-page .cfg-total { color: var(--clay-ink); border-top-color: rgba(43,42,58,.1) !important; }
+.clay-page .cfg-total strong { color: var(--clay-amber-2); font-size: 1.9rem; transition: color .2s ease; }
+.clay-page .cfg-trust span i { color: var(--clay-amber-2); }
+
+/* ---- responsive ---- */
+@media (max-width: 575.98px) {
+  :root { --clay-r: 22px; }
+  .clay-card { padding: 1.15rem; }
+}
+
+/* ============================================================
+   A11Y HOTFIX — contrast WCAG AA (din audit)
+   #9C7322 amber e 2.3:1 pe crem (pică). Pt TEXT folosim #9A5B00 (~5:1).
+   Amber-ul viu rămâne doar pe FILL-uri (butoane/iconițe), care trec.
+   ============================================================ */
+:root { --clay-accent-text: #9A5B00; }
+.clay-section .clay-price, .clay-section a.clay-textlink, .clay-section .accordion-body a,
+.clay-card .clay-price, .clay-chip i, .clay-pill i, .clay-pill .clay-price strong,
+.clay-section .accordion-button:not(.collapsed) { color: var(--clay-accent-text) !important; }
+.clay-page [style*="--clay-amber-2"] { color: var(--clay-accent-text) !important; }
+.clay-section .form-control::placeholder, .clay-page .form-control::placeholder { color: #6B6786; }
+.clay-quick:focus-visible, .clay-card a:focus-visible, a.clay-textlink:focus-visible,
+.clay-page #mainNav .nav-link:focus-visible, .clay-section .accordion-button:focus-visible {
+  outline: 3px solid var(--clay-mint); outline-offset: 3px; border-radius: 6px; }
+/* footer: crem în loc de banda navy (pagina e data-theme=dark) */
+.clay-page footer { background: var(--clay-bg-2) !important; border-top: 1px solid rgba(43,42,58,.08) !important; color: var(--clay-ink-soft); }
+.clay-page footer small, .clay-page footer a { color: var(--clay-ink-soft) !important; }
+.clay-page footer a[style*="--text"], .clay-page footer a[style*="text-dim"] { color: var(--clay-ink-soft) !important; }
+.clay-page .clay-footer h6 { color: var(--clay-ink); }
+
+/* ============================================================
+   OVERRIDE-uri clay pt componentele dark (service-card, trust-strip,
+   step-card, why-card, badge) — ca accesorii/telefoane/service să fie
+   clay doar prin adăugarea class="clay-page" + linkul CSS.
+   ============================================================ */
+.clay-page .trust-strip { background: var(--clay-bg-2) !important; color: var(--clay-ink-soft) !important; }
+.clay-page .trust-strip i { color: var(--clay-accent-text) !important; }
+.clay-page .service-card { background: var(--clay-surface) !important; border: none !important; box-shadow: var(--clay-shadow-sm) !important; color: var(--clay-ink); backdrop-filter: none; border-radius: var(--clay-r) !important; overflow: hidden; }
+.clay-page .service-card:hover { box-shadow: var(--clay-shadow-hover) !important; transform: translateY(-6px); }
+.clay-page .service-card .card-body { color: var(--clay-ink); }
+.clay-page .service-card p, .clay-page .service-card .text-muted { color: var(--clay-ink-soft) !important; }
+.clay-page .service-card .card-price { color: var(--clay-accent-text) !important; }
+.clay-page .service-card.featured { border: none !important; box-shadow: 0 0 0 2px var(--clay-amber-2), var(--clay-shadow-sm) !important; }
+.clay-page .premium-badge { background: var(--clay-amber-2) !important; color: #211E2E !important; }
+.clay-page .card-img-wrap { border-radius: var(--clay-r-sm) !important; overflow: hidden; }
+.clay-page .step-card { background: var(--clay-surface) !important; box-shadow: var(--clay-shadow-sm) !important; color: var(--clay-ink); border-radius: var(--clay-r) !important; }
+.clay-page .step-number { background: var(--clay-amber-2) !important; color: #211E2E !important; }
+.clay-page .badge.bg-dark { background: var(--clay-surface) !important; color: var(--clay-ink) !important; border-color: transparent !important; box-shadow: var(--clay-shadow-sm); }
+.clay-page .why-card { background: var(--clay-surface) !important; box-shadow: var(--clay-shadow-sm); color: var(--clay-ink); border-radius: var(--clay-r) !important; border: none; }
+.clay-page .why-card p { color: var(--clay-ink-soft) !important; }
+.clay-page .why-icon { color: var(--clay-amber-2); }
+
+/* ============================================================
+   DARK CLAYMORPHISM — html[data-theme="dark"] (din audit)
+   Suprafețe „night pottery" (nu negru pur), umbră exterioară adâncă +
+   highlight alb subtil sus-stânga. Accente vii; amber/mint pe text
+   se luminează ca să treacă WCAG AA pe închis.
+   ============================================================ */
+html[data-theme="dark"] {
+  --clay-bg:        #1A1726;
+  --clay-bg-2:      #14111E;
+  --clay-surface:   #272235;
+  --clay-amber:     #C49A4A;
+  --clay-amber-2:   #D9B36A;
+  --clay-accent-text: #D9B36A;
+  --clay-mint:      #4E8A80;
+  --clay-mint-2:    #6FB3A8;
+  --clay-coral:     #B97C62;
+  --clay-ink:       #F3EFFA;
+  --clay-ink-soft:  #B9B2CE;
+  --clay-shadow: 12px 12px 28px rgba(0,0,0,.55), -8px -8px 22px rgba(255,255,255,.045), inset 2px 2px 5px rgba(255,255,255,.05), inset -6px -6px 14px rgba(0,0,0,.45);
+  --clay-shadow-hover: 18px 22px 44px rgba(0,0,0,.62), -8px -8px 22px rgba(255,255,255,.055), inset 2px 2px 5px rgba(255,255,255,.05), inset -6px -6px 14px rgba(0,0,0,.45);
+  --clay-shadow-sm: 7px 7px 16px rgba(0,0,0,.5), -5px -5px 12px rgba(255,255,255,.04), inset 2px 2px 4px rgba(255,255,255,.045), inset -4px -4px 9px rgba(0,0,0,.4);
+}
+html[data-theme="dark"] .clay-section { background: linear-gradient(180deg, var(--clay-bg) 0%, var(--clay-bg-2) 100%); }
+html[data-theme="dark"] .clay-page { background: var(--clay-bg); }
+html[data-theme="dark"] .clay-blob { opacity: .28; filter: blur(10px); }
+html[data-theme="dark"] .clay-imgwrap { background: linear-gradient(145deg, #221D30, #15121F); box-shadow: inset 4px 4px 10px rgba(0,0,0,.5), inset -4px -4px 10px rgba(255,255,255,.04); }
+html[data-theme="dark"] .clay-btn--ghost { background: var(--clay-surface); color: var(--clay-ink); box-shadow: var(--clay-shadow-sm); }
+html[data-theme="dark"] .clay-btn:active { box-shadow: inset 5px 5px 12px rgba(0,0,0,.55), inset -2px -2px 6px rgba(255,255,255,.05); }
+html[data-theme="dark"] .clay-float-img { filter: drop-shadow(0 28px 44px rgba(0,0,0,.6)); }
+html[data-theme="dark"] .clay-page .page-header { background: linear-gradient(135deg, #2A2238 0%, #182230 100%) !important; }
+html[data-theme="dark"] .clay-page .page-header h1, html[data-theme="dark"] .clay-page .page-header p, html[data-theme="dark"] .clay-page .page-header .text-muted { color: var(--clay-ink) !important; }
+html[data-theme="dark"] .clay-page .info-card, html[data-theme="dark"] .clay-page .cfg-wrap, html[data-theme="dark"] .clay-page .cfg-brand-btn, html[data-theme="dark"] .clay-page .cfg-part, html[data-theme="dark"] .clay-page .service-card, html[data-theme="dark"] .clay-page .step-card, html[data-theme="dark"] .clay-page .why-card { background: var(--clay-surface) !important; color: var(--clay-ink); }
+html[data-theme="dark"] .clay-page .cfg-summary { background: linear-gradient(160deg, var(--clay-surface), #1F1A2C) !important; color: var(--clay-ink); }
+html[data-theme="dark"] .clay-page .trust-strip { background: var(--clay-bg-2) !important; }
+html[data-theme="dark"] .clay-page .badge.bg-dark { background: var(--clay-surface) !important; color: var(--clay-ink) !important; }
+html[data-theme="dark"] .clay-section .form-control, html[data-theme="dark"] .clay-section .form-select, html[data-theme="dark"] .clay-page .form-control, html[data-theme="dark"] .clay-page .form-select { background: var(--clay-bg-2); color: var(--clay-ink); box-shadow: inset 4px 4px 9px rgba(0,0,0,.5), inset -4px -4px 9px rgba(255,255,255,.04); }
+html[data-theme="dark"] .clay-section .form-control::placeholder, html[data-theme="dark"] .clay-page .form-control::placeholder { color: #7e7796; }
+html[data-theme="dark"] .clay-section .accordion-item, html[data-theme="dark"] .clay-section .accordion-button { background: var(--clay-surface) !important; }
+html[data-theme="dark"] .clay-section .accordion-button { color: var(--clay-ink) !important; }
+html[data-theme="dark"] .clay-section .accordion-button:not(.collapsed) { color: var(--clay-amber-2) !important; }
+html[data-theme="dark"] .clay-section .accordion-button::after { filter: invert(1) brightness(.85); }
+html[data-theme="dark"] .clay-page .cfg-part.is-selected { box-shadow: 0 0 0 3px var(--clay-mint), var(--clay-shadow-sm); }
+html[data-theme="dark"] .clay-page .cfg-line { border-color: rgba(255,255,255,.08) !important; }
+html[data-theme="dark"] .clay-page .cfg-total { border-top-color: rgba(255,255,255,.1) !important; }
+html[data-theme="dark"] .clay-page .btn-outline-light { color: var(--clay-ink) !important; border-color: rgba(255,255,255,.22) !important; }
+html[data-theme="dark"] .clay-page footer { background: var(--clay-bg-2) !important; border-top-color: rgba(255,255,255,.08) !important; }
+html[data-theme="dark"] .clay-page #mainNav { background: #14111E !important; box-shadow: 0 6px 24px rgba(0,0,0,.5); }
+
+/* ============================================================
+   CONFIGURATOR INTERACTIV (stepper + device reactiv + count-up
+   + sumar sticky / bottom-sheet pe mobil). Tot vanilla, clay.
+   ============================================================ */
+
+/* ---- STEPPER 1-2-3 ---- */
+.clay-page .cfg-stepper { display: flex; list-style: none; padding: 0; margin: 0 auto 1.6rem; max-width: 640px; gap: .4rem; }
+.clay-page .cfg-stepper-item { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: .45rem; position: relative; color: var(--clay-ink-soft); font-weight: 700; font-size: .82rem; text-align: center; }
+.clay-page .cfg-stepper-item::before { content: ''; position: absolute; top: 17px; left: -50%; width: 100%; height: 3px; background: rgba(43,42,58,.12); z-index: 0; border-radius: 2px; }
+.clay-page .cfg-stepper-item:first-child::before { display: none; }
+.clay-page .cfg-stepper-dot { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--clay-surface); box-shadow: var(--clay-shadow-sm); font-weight: 900; position: relative; z-index: 1; transition: transform .25s cubic-bezier(.22,1,.36,1), background .25s ease, color .25s ease; }
+.clay-page .cfg-stepper-item.is-active { color: var(--clay-ink); }
+.clay-page .cfg-stepper-item.is-active .cfg-stepper-dot { background: linear-gradient(145deg,#C49A4A,#9C7322); color: #3a2a05; transform: scale(1.12); }
+.clay-page .cfg-stepper-item.is-done .cfg-stepper-dot { background: linear-gradient(145deg,#7DB1A8,#3E776E); color: #04443c; }
+.clay-page .cfg-stepper-item.is-done::before, .clay-page .cfg-stepper-item.is-active::before { background: linear-gradient(90deg,#3E776E,#9C7322); }
+html[data-theme="dark"] .clay-page .cfg-stepper-item::before { background: rgba(255,255,255,.12); }
+
+/* ---- SIDE (device + sumar) sticky pe desktop ---- */
+@media (min-width: 992px) { .clay-page .cfg-side { position: sticky; top: 88px; } }
+
+/* ---- DEVICE reactiv ---- */
+.clay-page .cfg-device { display: grid; place-items: center; margin-bottom: 1rem; }
+.clay-page .cfg-device svg { width: 132px; height: auto; max-height: 250px; filter: drop-shadow(0 16px 26px rgba(43,42,58,.18)); }
+.clay-page .cfg-device.is-live svg { animation: clayFloatSlow 7s ease-in-out infinite; }
+.clay-page .cfg-device-name { margin-top: .5rem; font-weight: 800; color: var(--clay-ink); font-size: .95rem; min-height: 1.1em; }
+/* regiuni device: stins implicit, aprins cand piesa e selectata */
+.cfg-dev-body  { fill: var(--clay-surface); stroke: rgba(43,42,58,.22); stroke-width: 3; }
+.cfg-dev-screen{ fill: #ECE6FB; transition: fill .3s ease, filter .3s ease; }
+.cfg-dev-cam, .cfg-dev-batt, .cfg-dev-port, .cfg-dev-chip { fill: rgba(43,42,58,.18); transition: fill .3s ease, filter .3s ease; }
+.cfg-dev-chip { opacity: 0; transition: opacity .3s ease, fill .3s ease; }
+html[data-theme="dark"] .cfg-dev-body { stroke: rgba(255,255,255,.2); }
+html[data-theme="dark"] .cfg-dev-screen { fill: #2E2840; }
+html[data-theme="dark"] .cfg-dev-cam, html[data-theme="dark"] .cfg-dev-batt,
+html[data-theme="dark"] .cfg-dev-port, html[data-theme="dark"] .cfg-dev-chip { fill: rgba(255,255,255,.16); }
+/* aprins */
+.cfg-dev-screen.lit { fill: #D8BB7C; filter: drop-shadow(0 0 7px rgba(244,169,52,.8)); }
+.cfg-dev-batt.lit, .cfg-dev-port.lit, .cfg-dev-cam.lit { fill: #4E8A80; filter: drop-shadow(0 0 6px rgba(47,208,188,.85)); }
+.cfg-dev-body.lit { stroke: #B97C62; filter: drop-shadow(0 0 6px rgba(255,140,122,.7)); }
+.cfg-dev-chip.lit { opacity: 1; fill: #C49A4A; filter: drop-shadow(0 0 6px rgba(244,169,52,.9)); }
+
+/* ---- count-up: pulse subtil cand se schimba totalul ---- */
+.clay-page .cfg-total strong.cfg-bump { animation: cfgBump .42s ease; }
+@keyframes cfgBump { 0%{ transform: scale(1); } 40%{ transform: scale(1.13); } 100%{ transform: scale(1); } }
+
+/* ---- badge "Cere oferta" (model fara pret) ---- */
+.clay-page .cfg-askbadge { display: inline-flex; align-items: center; gap: .4rem; background: linear-gradient(145deg,#CDA08F,#B97C62); color: #5e1c12; font-weight: 800; font-size: .78rem; padding: .35rem .8rem; border-radius: var(--clay-r-pill); box-shadow: var(--clay-shadow-sm); }
+
+/* ---- bottom-sheet pe mobil ---- */
+.cfg-sheet { display: none; }
+@media (max-width: 991.98px) {
+  .clay-page .cfg-side { position: static; }
+  .clay-page .cfg-device { display: none; }
+  .cfg-sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999;
+    display: flex; align-items: center; gap: .8rem; padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
+    background: var(--clay-surface); box-shadow: 0 -8px 24px rgba(43,42,58,.18);
+    border-top-left-radius: 20px; border-top-right-radius: 20px;
+    transform: translateY(110%); transition: transform .32s cubic-bezier(.22,1,.36,1); }
+  .cfg-sheet.is-up { transform: translateY(0); }
+  .cfg-sheet .cfg-sheet-info { display: flex; flex-direction: column; line-height: 1.1; }
+  .cfg-sheet .cfg-sheet-label { font-size: .72rem; color: var(--clay-ink-soft); font-weight: 600; }
+  .cfg-sheet .cfg-sheet-total { font-size: 1.35rem; font-weight: 900; color: var(--clay-accent-text); }
+  .cfg-sheet .clay-btn { margin-left: auto; }
+  body.cfg-sheet-on .sticky-cta { display: none !important; }
+}
+html[data-theme="dark"] .cfg-sheet { background: var(--clay-surface); box-shadow: 0 -8px 24px rgba(0,0,0,.5); }
+
+@media (prefers-reduced-motion: reduce) {
+  .clay-page .cfg-device.is-live svg, .clay-page .cfg-total strong.cfg-bump { animation: none !important; }
+  .clay-page .cfg-stepper-dot { transition: none !important; }
+}
+
+/* ============================================================
+   NAV dropdown (Reparații / Ghiduri) + FOOTER sitemap 4-col + ANPC
+   ============================================================ */
+.clay-page #mainNav .dropdown-menu {
+  background: var(--clay-surface); border: none; border-radius: var(--clay-r-sm);
+  box-shadow: var(--clay-shadow); padding: .5rem; margin-top: .6rem; min-width: 230px;
+}
+.clay-page #mainNav .dropdown-item {
+  color: var(--clay-ink); border-radius: 10px; padding: .55rem .9rem; font-weight: 600; white-space: normal;
+}
+.clay-page #mainNav .dropdown-item:hover, .clay-page #mainNav .dropdown-item:focus { background: var(--clay-bg-2); color: var(--clay-ink); }
+.clay-page #mainNav .dropdown-divider { border-color: rgba(43,42,58,.12); }
+html[data-theme="dark"] .clay-page #mainNav .dropdown-menu { background: #221E30; }
+html[data-theme="dark"] .clay-page #mainNav .dropdown-item { color: var(--clay-ink); }
+html[data-theme="dark"] .clay-page #mainNav .dropdown-item:hover, html[data-theme="dark"] .clay-page #mainNav .dropdown-item:focus { background: #14111E; }
+html[data-theme="dark"] .clay-page #mainNav .dropdown-divider { border-color: rgba(255,255,255,.12); }
+
+.clay-page .clay-footer { background: var(--clay-bg-2) !important; color: var(--clay-ink-soft); border-top: 1px solid rgba(43,42,58,.08) !important; }
+.clay-page .clay-footer h6 { color: var(--clay-ink); font-weight: 800; margin-bottom: .8rem; font-size: .92rem; letter-spacing: .01em; }
+.clay-page .clay-footer ul { list-style: none; padding: 0; margin: 0; }
+.clay-page .clay-footer li { margin-bottom: .42rem; }
+.clay-page .clay-footer a { color: var(--clay-ink-soft) !important; text-decoration: none; font-size: .9rem; transition: color .15s ease; }
+.clay-page .clay-footer a:hover { color: var(--clay-accent-text) !important; }
+.clay-page .clay-footer .footer-brand small { color: var(--clay-ink-soft); line-height: 1.7; }
+.clay-page .clay-footer .footer-bottom { border-top: 1px solid rgba(43,42,58,.1); margin-top: 1.6rem; padding-top: 1rem; }
+.clay-page .clay-footer .footer-bottom a { font-size: 1.05rem; }
+.clay-page .anpc-badges { display: flex; gap: .45rem; flex-wrap: wrap; margin-top: .7rem; }
+.clay-page .anpc-badges a { display: inline-flex; align-items: center; gap: .35rem; background: var(--clay-surface); border-radius: 8px; padding: .35rem .6rem; box-shadow: var(--clay-shadow-sm); font-size: .72rem !important; font-weight: 700; }
+.clay-page .anpc-badges a i { color: var(--clay-accent-text); }
+html[data-theme="dark"] .clay-page .clay-footer { border-top-color: rgba(255,255,255,.08) !important; }
+html[data-theme="dark"] .clay-page .clay-footer .footer-bottom { border-top-color: rgba(255,255,255,.1); }
+
+/* ============================================================
+   MOBILE TAILORING — experiență mobilă dedicată (responsive),
+   + hooks pe device (is-phone/is-ios/is-touch) din js/main.js.
+   ============================================================ */
+@media (max-width: 767.98px) {
+  /* tap targets confortabile (min ~46px) */
+  .clay-page .clay-btn, .clay-page .btn { min-height: 46px; }
+  .clay-page #mainNav .dropdown-item { padding-top: .72rem; padding-bottom: .72rem; }
+  .clay-page .theme-toggle { min-width: 44px; min-height: 44px; }
+  /* hero mai compact pe telefon */
+  .clay-page #hero { padding-top: 92px !important; padding-bottom: 28px !important; }
+  /* footer: mai mult spațiu între linkuri la atingere + secțiuni separate vizual */
+  .clay-page .clay-footer li { margin-bottom: .7rem; }
+  .clay-page .clay-footer a { font-size: .98rem; }
+  .clay-page .clay-footer h6 { margin-top: .4rem; }
+  /* configurator: controale mai mari la atingere */
+  .clay-page .cfg-brand-btn { padding: .8rem 1.05rem; }
+  .clay-page .cfg-part { padding: .9rem; }
+  /* blob-urile decorative scoase pe telefon (claritate + performanță) */
+  .clay-page .clay-blob { display: none; }
+}
+/* doar pe touch: scoatem efectele de hover-lift care „rămân lipite" după tap */
+.is-touch .clay-card:hover, .is-touch .clay-quick:hover, .is-touch .service-card:hover { transform: none; }
+/* safe-area iOS pentru bara fixă „Sună" de jos (sub notch/home-bar) */
+.is-ios .sticky-cta { padding-bottom: calc(.55rem + env(safe-area-inset-bottom)); }
+
+/* ===== ACORDEON FAQ pe orice pagină clay (nu doar .clay-section) ===== */
+.clay-page .accordion { --bs-accordion-bg: transparent; --bs-accordion-border-color: transparent; }
+.clay-page .accordion-item { background: var(--clay-surface) !important; border: none !important; border-radius: var(--clay-r-sm) !important; margin-bottom: .8rem; box-shadow: var(--clay-shadow-sm); overflow: hidden; }
+.clay-page .accordion-button { background: var(--clay-surface) !important; color: var(--clay-ink) !important; font-weight: 700; box-shadow: none !important; }
+.clay-page .accordion-button:not(.collapsed) { color: var(--clay-accent-text) !important; background: var(--clay-surface) !important; }
+.clay-page .accordion-button:focus { box-shadow: 0 0 0 3px rgba(47,208,188,.3); }
+.clay-page .accordion-body { color: var(--clay-ink-soft); }
+.clay-page .accordion-body a { color: var(--clay-accent-text); font-weight: 700; text-decoration: none; }
+html[data-theme="dark"] .clay-page .accordion-button::after { filter: invert(1) brightness(.85); }
+
+/* ===== mini-card pe tiere de manoperă (folosește clay-card) ===== */
+.clay-page .tier-card { align-items: flex-start; }
+.clay-page .tier-card .clay-price { font-size: .95rem; }
+
+/* ===== BRAND BUTTONS cu logo oficial mare + text dedesubt ===== */
+.clay-page .cfg-brands { display: flex; flex-wrap: wrap; gap: .7rem; }
+.clay-page .cfg-brand-btn { display: flex; flex-direction: column; align-items: center; gap: .5rem; width: 104px; padding: .9rem .5rem; background: var(--clay-surface); border: none; border-radius: var(--clay-r-sm); box-shadow: var(--clay-shadow-sm); color: var(--clay-ink); font-weight: 700; transition: transform .15s ease, box-shadow .15s ease; }
+.clay-page .cfg-brand-btn:hover { transform: translateY(-3px); box-shadow: var(--clay-shadow); }
+.clay-page .cfg-brand-tile { width: 62px; height: 62px; border-radius: 16px; background: #fff; display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(43,42,58,.07), 0 2px 6px rgba(43,42,58,.08); }
+.clay-page .cfg-brand-tile img { width: 64%; height: 64%; object-fit: contain; display: block; }
+.clay-page .cfg-brand-tile--icon { background: linear-gradient(145deg,#D8BB7C,#B98B3C); box-shadow: var(--clay-shadow-sm); }
+.clay-page .cfg-brand-tile--icon i { font-size: 1.7rem; color: #5a3d05; }
+.clay-page .cfg-brand-name { font-size: .82rem; line-height: 1.12; text-align: center; color: var(--clay-ink); }
+.clay-page .cfg-brand-btn.is-active { background: var(--clay-surface) !important; color: var(--clay-ink) !important; box-shadow: 0 0 0 2px var(--clay-amber-2), var(--clay-shadow) !important; }
+.clay-page .cfg-brand-btn.is-active .cfg-brand-name { color: var(--clay-accent-text); }
+html[data-theme="dark"] .clay-page .cfg-brand-tile { background: #fff; }
+@media (max-width: 575.98px) { .clay-page .cfg-brand-btn { width: calc(33.333% - .5rem); } }
+
+/* ===== GRILĂ VIZUALĂ DE MODELE (poză + nume) — ex. iPhone ===== */
+.clay-page .cfg-model-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(94px, 1fr)); gap: .6rem; max-height: 380px; overflow-y: auto; padding: .25rem; margin-top: .6rem; }
+.clay-page .cfg-model-card { display: flex; flex-direction: column; align-items: center; gap: .4rem; padding: .55rem .4rem; background: var(--clay-surface); border: none; border-radius: 14px; box-shadow: var(--clay-shadow-sm); color: var(--clay-ink); cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; }
+.clay-page .cfg-model-card:hover { transform: translateY(-3px); box-shadow: var(--clay-shadow); }
+.clay-page .cfg-model-card.is-active { box-shadow: 0 0 0 2px var(--clay-mint), var(--clay-shadow-sm); }
+.clay-page .cfg-model-img { position: relative; width: 100%; aspect-ratio: 3/4; border-radius: 12px; background: linear-gradient(150deg, #FFE7BE 0%, #E9F7F2 48%, #EFE7FF 100%); display: grid; place-items: center; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(43,42,58,.05), inset 0 2px 10px rgba(255,255,255,.5); }
+.clay-page .cfg-model-img::after { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 80% at 30% 10%, rgba(255,255,255,.45), transparent 60%); pointer-events: none; }
+.clay-page .cfg-model-img i { font-size: 1.9rem; color: #a59fbb; }
+.clay-page .cfg-model-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.clay-page .cfg-model-name { font-size: .74rem; line-height: 1.12; text-align: center; color: var(--clay-ink); font-weight: 700; }
+html[data-theme="dark"] .clay-page .cfg-model-img { background: linear-gradient(145deg,#221D30,#15121F); }
+html[data-theme="dark"] .clay-page .cfg-model-img i { color: #7e7796; }
+.clay-page .cfg-model-ph { width: 42%; height: 42%; color: #bcb4d4; }
+html[data-theme="dark"] .clay-page .cfg-model-ph { color: #5b5474; }
+/* placeholder text DOAR când nu există poză (poza, absolut poziționată, îl acoperă) */
+.clay-page .cfg-model-label { font-weight: 900; font-size: 1rem; line-height: 1.04; text-align: center; color: #2B2A3A; padding: .2rem .3rem; }
+.clay-page .cfg-model-more { grid-column: 1 / -1; text-align: center; font-size: .78rem; color: var(--clay-ink-soft); padding: .5rem; font-weight: 600; }
+
+/* ===== CATEGORY TABS (Telefoane / Laptopuri / Tablete / Microsoldering) ===== */
+.clay-page .cfg-tabs { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-bottom: 1.3rem; }
+.clay-page .cfg-tab { display: inline-flex; align-items: center; gap: .45rem; padding: .62rem 1.15rem; border: none; border-radius: 999px; background: var(--clay-surface); box-shadow: var(--clay-shadow-sm); color: var(--clay-ink-soft); font-weight: 700; font-size: .92rem; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, color .18s ease; }
+.clay-page .cfg-tab i { font-size: 1.05rem; }
+.clay-page .cfg-tab:hover { transform: translateY(-2px); box-shadow: var(--clay-shadow); color: var(--clay-ink); }
+.clay-page .cfg-tab.is-active { background: linear-gradient(145deg,#C49A4A,#9C7322); color: #3a2a05; box-shadow: 6px 6px 14px rgba(224,148,31,.3), -3px -3px 8px rgba(255,255,255,.5); }
+.clay-page .cfg-tab.is-active i { color: #5a3d05; }
+
+/* brand text-logo fallback (mărci fără SVG: Redmi / realme) */
+.clay-page .cfg-brand-tile--text { background: #fff; font-weight: 900; font-size: .92rem; letter-spacing: -.01em; line-height: 1; padding: .3rem; text-align: center; }
+
+/* ===== A11Y: focus vizibil consistent pe tot ce e interactiv (tastatură) ===== */
+.clay-page a:focus-visible, .clay-page button:focus-visible, .clay-page input:focus-visible,
+.clay-page select:focus-visible, .clay-page textarea:focus-visible, .clay-page [tabindex]:focus-visible,
+.clay-page .nav-link:focus-visible, .clay-page .dropdown-item:focus-visible,
+.clay-page .accordion-button:focus-visible, .clay-page .cfg-brand-btn:focus-visible,
+.clay-page .cfg-part:focus-within {
+  outline: 3px solid var(--clay-mint) !important; outline-offset: 2px; border-radius: 6px;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   HERO v2 — premium, price-forward. Foto contenită + card „preț instant"
+   plutitor (diferențiatorul: prețuri transparente). Light + dark.
+   ════════════════════════════════════════════════════════════════════════ */
+#hero.hero-v2 {
+  position: relative; overflow: hidden;
+  padding-top: 132px; padding-bottom: 88px;
+  background: linear-gradient(180deg, var(--clay-bg) 0%, var(--clay-bg-2) 100%);
+}
+/* glow auriu mare & subtil în spate — adâncime premium, fără blob candy */
+#hero .hero-glow {
+  position: absolute; z-index: 0; pointer-events: none;
+  width: 760px; height: 760px; top: -240px; right: -180px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(196,154,74,.20), rgba(196,154,74,0) 68%);
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-size: .8rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--clay-ink-soft); background: var(--clay-surface);
+  padding: .42rem .9rem; border-radius: 999px;
+  box-shadow: var(--clay-shadow-sm); margin-bottom: 1.4rem;
+}
+.hero-dot {
+  width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto;
+  background: #2FA36B; box-shadow: 0 0 0 0 rgba(47,163,107,.55);
+  animation: heroPulse 2.4s ease-out infinite;
+}
+@keyframes heroPulse {
+  0% { box-shadow: 0 0 0 0 rgba(47,163,107,.5); }
+  70% { box-shadow: 0 0 0 9px rgba(47,163,107,0); }
+  100% { box-shadow: 0 0 0 0 rgba(47,163,107,0); }
+}
+
+.hero-title {
+  font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+  font-size: clamp(2.7rem, 5.4vw, 4.5rem); line-height: 1.08; letter-spacing: -.018em;
+  color: var(--clay-ink); margin-bottom: 1.05rem;
+}
+.hero-accent {
+  display: inline-block; color: var(--clay-ink); font-weight: 600;
+  font-style: italic;            /* Fraunces italic = accent editorial, contrast maxim */
+  transition: opacity .3s ease, transform .3s ease;
+}
+.hero-accent::after {            /* swash auriu subtil sub cuvântul dinamic */
+  content: ""; display: block; height: 4px; margin-top: .12em;
+  width: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--clay-amber) 0%, var(--clay-amber-2) 100%);
+}
+.hero-sub {
+  font-size: 1.16rem; line-height: 1.62; color: var(--clay-ink-soft);
+  max-width: 31rem; margin-bottom: 1.7rem;
+}
+.hero-sub strong { color: var(--clay-ink); font-weight: 700; }
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: .9rem; margin-bottom: 1.7rem; }
+
+/* trust row — editorial, fără chip-uri chunky */
+.hero-trust {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-wrap: wrap; gap: .5rem 1.5rem;
+}
+.hero-trust li {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .95rem; font-weight: 600; color: var(--clay-ink);
+}
+.hero-trust i { color: #8A4F00; font-size: 1.05rem; }
+
+/* ── dreapta: scenă (foto contenită + card preț plutitor + badge) ── */
+.hero-stage { position: relative; min-height: 446px; }
+.hero-photo-card {
+  position: absolute; top: 0; right: 0; width: 84%; aspect-ratio: 4 / 3;
+  border-radius: var(--clay-r); overflow: hidden;
+  box-shadow: var(--clay-shadow); background: var(--clay-bg-2);
+}
+.hero-photo-card img { width: 100%; height: 100%; object-fit: cover; object-position: 72% center; display: block; }
+
+.hero-price-card {
+  position: absolute; left: 0; bottom: 6px; z-index: 2;
+  width: min(64%, 272px);
+  display: flex; flex-direction: column; gap: .3rem;
+  background: var(--clay-surface); border-radius: var(--clay-r-sm);
+  padding: 1.05rem 1.2rem; box-shadow: var(--clay-shadow);
+  text-decoration: none; color: var(--clay-ink);
+  transition: transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s ease;
+}
+.hero-price-card:hover { transform: translateY(-5px); box-shadow: var(--clay-shadow-hover); color: var(--clay-ink); }
+.hpc-top {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--clay-ink-soft);
+}
+.hpc-model { font-size: .9rem; color: var(--clay-ink-soft); }
+.hpc-price {
+  font-family: 'Fraunces', Georgia, serif; line-height: 1;
+  display: flex; align-items: baseline; gap: .35rem; margin: .15rem 0 .25rem;
+}
+.hpc-price strong { font-size: 2.6rem; font-weight: 700; color: var(--clay-ink); }
+.hpc-price span { font-size: 1rem; font-weight: 600; color: var(--clay-ink-soft); font-family: var(--bs-body-font-family, inherit); }
+.hpc-price .hpc-from { font-size: .82rem; font-weight: 600; color: var(--clay-ink-soft); font-family: var(--bs-body-font-family, inherit); align-self: center; }
+.hpc-cta {
+  font-size: .85rem; font-weight: 700; color: #8A4F00;
+  display: inline-flex; align-items: center; gap: .35rem;
+}
+.hpc-cta i { transition: transform .2s ease; }
+.hero-price-card:hover .hpc-cta i { transform: translateX(4px); }
+
+.hero-badge {
+  position: absolute; top: 14px; left: 3%; z-index: 2;
+  display: inline-flex; align-items: center; gap: .42rem;
+  background: var(--clay-surface); color: var(--clay-ink);
+  font-size: .8rem; font-weight: 700; padding: .5rem .9rem; border-radius: 999px;
+  box-shadow: var(--clay-shadow-sm);
+}
+.hero-badge i { color: #2FA36B; }
+
+/* DARK */
+html[data-theme="dark"] #hero.hero-v2 { background: linear-gradient(180deg, var(--clay-bg) 0%, var(--clay-bg-2) 100%); }
+html[data-theme="dark"] .hero-glow { background: radial-gradient(circle at 50% 50%, rgba(217,179,106,.16), rgba(217,179,106,0) 68%); }
+html[data-theme="dark"] .hero-trust i,
+html[data-theme="dark"] .hpc-cta { color: #FFC15E; }
+html[data-theme="dark"] .hpc-price strong { color: var(--clay-ink); }
+
+/* RESPONSIVE */
+@media (max-width: 991.98px) {
+  #hero.hero-v2 { padding-top: 104px; padding-bottom: 52px; }
+  .hero-stage { min-height: 0; margin-top: 1.2rem; margin-bottom: 30px; }
+  .hero-photo-card { position: relative; width: 100%; aspect-ratio: 16 / 10; }
+  .hero-price-card { left: 14px; bottom: -20px; width: 232px; }
+  .hero-badge { top: 12px; right: 12px; left: auto; }
+}
+@media (max-width: 575.98px) {
+  .hero-price-card { width: 60%; min-width: 200px; padding: .9rem 1rem; }
+  .hpc-price strong { font-size: 2.15rem; }
+  .hero-trust { gap: .45rem 1.1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-dot { animation: none; }
+}
+
+/* Chip preț pe cardul de model din configurator (priced-first) */
+.cfg-model-price { display:block; margin-top:.15rem; font-size:.74rem; font-weight:700; color: var(--clay-accent-text, #9A5B00); }
+.cfg-model-price--ask { color: var(--clay-ink-soft); font-weight:600; }
+html[data-theme="dark"] .cfg-model-price { color:#FFC15E; }
+
+/* „Atinge defectul" — regiuni SVG clicabile pe device (doar când e ales un model) */
+.cfg-device.is-live { position: relative; }
+.cfg-device.is-live .cfg-dev-hit { cursor: pointer; transition: filter .15s ease; }
+.cfg-device.is-live .cfg-dev-hit:hover { filter: brightness(1.12) drop-shadow(0 0 4px rgba(196,154,74,.85)); }
+.cfg-device:not(.is-live) .cfg-dev-hit { cursor: default; }
+.cfg-device.is-live::after { content: 'Atinge zona stricată pe telefon'; display: block; text-align: center; font-size: .78rem; font-weight: 600; color: var(--clay-ink-soft); margin-top: .35rem; }
