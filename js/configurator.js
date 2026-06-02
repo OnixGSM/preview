@@ -25,6 +25,10 @@
   const esc = s => (s + '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
   const slugify = s => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  // Model photos that actually exist in assets/img/models/ (slug = slugify(name)).
+  // Only these emit an <img>; the rest show the premium placeholder, no 404 request.
+  // Regenerate after adding photos: ls assets/img/models/*.jpg | xargs -n1 basename | sed 's/.jpg$//'
+  const MODEL_IMG = new Set(['iphone-11','iphone-11-pro','iphone-11-pro-max','iphone-12','iphone-12-mini','iphone-12-pro','iphone-12-pro-max','iphone-13','iphone-13-mini','iphone-13-pro','iphone-13-pro-max','iphone-14','iphone-14-plus','iphone-14-pro','iphone-14-pro-max','iphone-15','iphone-15-plus','iphone-15-pro','iphone-15-pro-max','iphone-16e','iphone-16','iphone-16-plus','iphone-16-pro','iphone-16-pro-max','iphone-17e','iphone-17','iphone-17-pro','iphone-17-pro-max','iphone-air','iphone-se-2020','iphone-se-2022','iphone-x','iphone-xr','iphone-xs','iphone-xs-max']);
   const shortModel = s => (s || '').replace(/^(iPhone|Galaxy|Redmi|POCO|Xiaomi|Honor|Huawei|Motorola|Moto|Oppo|OnePlus|realme|Realme|Vivo|Pixel|Google|Nokia|Lenovo)\s+/i, '').trim() || s;
   const waHref = text => 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
   const PHONE_SVG = '<svg class="cfg-model-ph" viewBox="0 0 40 56" aria-hidden="true"><rect x="6" y="2" width="28" height="52" rx="6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="7.5" r="1.4" fill="currentColor"/></svg>';
@@ -37,13 +41,13 @@
       { key: 'iphone', label: 'iPhone', logo: 'apple' },
       { key: 'samsung', label: 'Samsung', logo: 'samsung' },
       { key: 'xiaomi', label: 'Xiaomi', logo: 'xiaomi', bucket: 'xiaomi', exclude: ['redmi', 'poco'] },
-      { key: 'redmi', label: 'Redmi', logo: null, color: '#FF6900', bucket: 'xiaomi', include: ['redmi', 'poco'] },
+      { key: 'redmi', label: 'Redmi', logo: null, color: '#C2410C', bucket: 'xiaomi', include: ['redmi', 'poco'] },
       { key: 'honor', label: 'Honor', logo: 'honor', bucket: 'honor' },
       { key: 'oppo', label: 'Oppo', logo: 'oppo', bucket: 'oppo', exclude: ['realme'] },
       { key: 'huawei', label: 'Huawei', logo: 'huawei', bucket: 'huawei' },
       { key: 'motorola', label: 'Motorola', logo: 'motorola', bucket: 'motorola' },
       { key: 'oneplus', label: 'OnePlus', logo: 'oneplus', bucket: 'oneplus' },
-      { key: 'realme', label: 'realme', logo: null, color: '#E6B800', bucket: 'oppo', include: ['realme'] },
+      { key: 'realme', label: 'realme', logo: null, color: '#A16207', bucket: 'oppo', include: ['realme'] },
       { key: 'vivo', label: 'Vivo', logo: 'vivo' },
       { key: 'google', label: 'Google Pixel', logo: 'google', bucket: 'google' },
       { key: 'nokia', label: 'Nokia', logo: 'nokia', bucket: 'altele', include: ['nokia'] },
@@ -65,7 +69,7 @@
         { key: 'apple', label: 'Apple iPad', logo: 'apple' }, { key: 'samsung', label: 'Galaxy Tab', logo: 'samsung' },
         { key: 'xiaomi', label: 'Xiaomi', logo: 'xiaomi' }, { key: 'lenovo', label: 'Lenovo', logo: 'lenovo' },
         { key: 'huawei', label: 'Huawei', logo: 'huawei' }, { key: 'honor', label: 'Honor', logo: 'honor' },
-        { key: 'microsoft', label: 'Surface', logo: 'microsoft' }, { key: 'realme', label: 'realme', logo: null, color: '#E6B800' },
+        { key: 'microsoft', label: 'Surface', logo: 'microsoft' }, { key: 'realme', label: 'realme', logo: null, color: '#A16207' },
         { key: 'nokia', label: 'Nokia', logo: 'nokia' }, { key: 'amazon', label: 'Amazon Fire', logo: 'amazon' },
       ] },
     { key: 'micro', label: 'Microsoldering', icon: 'bi-cpu', kind: 'micro',
@@ -244,8 +248,9 @@
       card.type = 'button'; card.className = 'cfg-model-card'; card.dataset.model = name;
       const cp = cheapestFor(name);
       const chip = cp ? '<span class="cfg-model-price">de la ' + fmt(cp) + ' lei</span>' : '<span class="cfg-model-price cfg-model-price--ask">ofertă</span>';
-      card.innerHTML = '<span class="cfg-model-img"><span class="cfg-model-label">' + esc(shortModel(name)) + '</span>' +
-        '<img src="assets/img/models/' + slugify(name) + '.jpg" alt="' + esc(name) + '" loading="lazy" onerror="this.remove()"></span>' +
+      const mslug = slugify(name);
+      const mimg = MODEL_IMG.has(mslug) ? '<img src="assets/img/models/' + mslug + '.jpg" alt="' + esc(name) + '" loading="lazy" onerror="this.remove()">' : '';
+      card.innerHTML = '<span class="cfg-model-img"><span class="cfg-model-label">' + esc(shortModel(name)) + '</span>' + mimg + '</span>' +
         '<span class="cfg-model-name">' + esc(name) + '</span>' + chip;
       card.addEventListener('click', () => {
         Array.prototype.forEach.call(elModelGrid.children, c => c.classList.toggle('is-active', c === card));
@@ -436,7 +441,7 @@
   var booted = false; // nu scrie hash-ul în URL în timpul init (altfel restore crede că e stare salvată și derulează pagina)
   function syncHash() { if (!booted || !state.cat) return; try { history.replaceState(null, '', location.pathname + location.search + hashString()); } catch (e) {} }
   function restore() {
-    try { const d = new URLSearchParams(location.search).get('defect'); if (d && DEFECTS[d]) { pendingDefect = d; showDefectHint(DEFECTS[d].label); root.scrollIntoView({ behavior: 'smooth', block: 'start' }); } } catch (e) {}
+    try { const d = new URLSearchParams(location.search).get('defect'); if (d && DEFECTS[d]) { pendingDefect = d; showDefectHint(DEFECTS[d].label); } } catch (e) {}
     // pre-selectare marcă: ?brand=iphone (din nav) sau data-default-brand pe #cfg (pagini dedicate) → deschide direct la model
     try {
       let hashBrand = null;
@@ -444,7 +449,7 @@
       if (!hashBrand) {
         const params = new URLSearchParams(location.search);
         const bp = params.get('brand') || root.getAttribute('data-default-brand');
-        if (bp) { const br = findBrand('phone', bp); if (br) { selectCategory('phone'); selectPhoneBrand(br); if (params.get('brand')) root.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; } }
+        if (bp) { const br = findBrand('phone', bp); if (br) { selectCategory('phone'); selectPhoneBrand(br); return; } }
       }
     } catch (e) {}
     try {
@@ -461,7 +466,9 @@
           if (o.x && elExpress) { elExpress.checked = true; state.express = true; renderSummary(); }
         }
       } else if (cat && cat.kind === 'eval' && o.b) { const br = findBrand(o.c, o.b); if (br) selectEvalBrand(cat, br); }
-      syncHash(); root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Restore the configurator STATE silently — never scroll the page on load.
+      // (Intentional navigation to the configurator uses the #configurator href anchor.)
+      syncHash();
     } catch (e) {}
   }
 

@@ -529,6 +529,7 @@ html[data-theme="dark"] .clay-page .cfg-model-img i { color: #7e7796; }
 html[data-theme="dark"] .clay-page .cfg-model-ph { color: #5b5474; }
 /* placeholder text DOAR când nu există poză (poza, absolut poziționată, îl acoperă) */
 .clay-page .cfg-model-label { font-weight: 900; font-size: 1rem; line-height: 1.04; text-align: center; color: #2B2A3A; padding: .2rem .3rem; }
+html[data-theme="dark"] .clay-page .cfg-model-label { color: #D8D2E8; }
 .clay-page .cfg-model-more { grid-column: 1 / -1; text-align: center; font-size: .78rem; color: var(--clay-ink-soft); padding: .5rem; font-weight: 600; }
 
 /* ===== CATEGORY TABS (Telefoane / Laptopuri / Tablete / Microsoldering) ===== */
