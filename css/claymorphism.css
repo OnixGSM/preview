@@ -74,6 +74,9 @@
 .clay-card h3 { font-weight: 800; font-size: 1.15rem; margin-bottom: .4rem; }
 .clay-card p  { color: var(--clay-ink-soft); font-size: .92rem; margin-bottom: .75rem; }
 .clay-card .clay-price { color: var(--clay-amber-2); font-weight: 800; }
+/* Long single words (e.g. "Microsoldering") must wrap, not overflow the flex card on mobile. */
+.clay-card.d-flex > div { min-width: 0; }
+.clay-card h3, .clay-card .clay-price { overflow-wrap: break-word; }
 
 /* zonă imagine în card (placeholder până vin pozele 3D) */
 .clay-imgwrap {
@@ -452,6 +455,8 @@ html[data-theme="dark"] .clay-page #mainNav .dropdown-divider { border-color: rg
 .clay-page .clay-footer a:hover { color: var(--clay-accent-text) !important; }
 .clay-page .clay-footer .footer-brand small { color: var(--clay-ink-soft); line-height: 1.7; }
 .clay-page .clay-footer .footer-bottom { border-top: 1px solid rgba(43,42,58,.1); margin-top: 1.6rem; padding-top: 1rem; }
+/* Mobile: larger tap area for footer nav links (>= ~40px) without enlarging text. */
+@media (max-width: 767.98px) { .clay-page .clay-footer li a { display: inline-block; padding: .32rem 0; } }
 .clay-page .clay-footer .footer-bottom a { font-size: 1.05rem; }
 .clay-page .anpc-badges { display: flex; gap: .45rem; flex-wrap: wrap; margin-top: .7rem; }
 .clay-page .anpc-badges a { display: inline-flex; align-items: center; gap: .35rem; background: var(--clay-surface); border-radius: 8px; padding: .35rem .6rem; box-shadow: var(--clay-shadow-sm); font-size: .72rem !important; font-weight: 700; }

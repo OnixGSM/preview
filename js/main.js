@@ -104,7 +104,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (!b) return;
     const now = new Date(), day = now.getDay(), t = now.getHours() + now.getMinutes() / 60;
     const open = day >= 1 && day <= 5 && t >= 10 && t < 20;
-    b.innerHTML = open ? '<span class="open-dot"></span> Deschi\u0219i acum' : '<span class="closed-dot"></span> \u00CEnchis';
+    b.innerHTML = open ? '<span class="open-dot"></span> Deschis acum' : '<span class="closed-dot"></span> \u00CEnchis';
     b.classList.add(open ? 'status-open' : 'status-closed');
 })();
 
@@ -139,7 +139,12 @@ window.loadMap = function() {
     const n = document.getElementById('cookieNotice');
     if (!n) return;
     n.classList.add('visible');
-    document.getElementById('cookieAccept').addEventListener('click', () => { localStorage.setItem('cookieOk', '1'); n.classList.remove('visible'); });
+    // Lift the bottom-fixed action bars (sticky CTA, WhatsApp, scroll-top) above the
+    // banner so the call button is never covered on a first visit.
+    document.body.classList.add('cookie-open');
+    const setH = () => document.documentElement.style.setProperty('--cookie-h', n.offsetHeight + 'px');
+    setH(); window.addEventListener('resize', setH);
+    document.getElementById('cookieAccept').addEventListener('click', () => { localStorage.setItem('cookieOk', '1'); n.classList.remove('visible'); document.body.classList.remove('cookie-open'); });
 })();
 
 // CONFIGURATOR DE REPARA\u021AIE \u2014 single source: window.ONIX_PRICES (js/data/pricing.js)

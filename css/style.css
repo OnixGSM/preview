@@ -459,6 +459,14 @@ html[data-theme="dark"] #hero .lead strong { opacity: 1; color: #fff; }
 }
 .sticky-cta .btn { border-radius: 12px; font-size: 1rem; padding: 12px; }
 
+/* Cookie banner open: lift the bottom-fixed bars above it (CTA must stay tappable). */
+body.cookie-open .sticky-cta { bottom: var(--cookie-h, 92px); }
+body.cookie-open .whatsapp-float { bottom: calc(var(--cookie-h, 92px) + 80px); }
+body.cookie-open .scroll-top { bottom: calc(var(--cookie-h, 92px) + 150px); }
+
+/* Mobile tap targets >= 44px for the footer icon-only links */
+.footer-bottom a[aria-label] { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+
 /* === FOOTER === */
 footer { background: var(--bg-alt); border-top: 1px solid var(--border); }
 footer a { font-size: 1.2rem; transition: color .2s; }
@@ -468,7 +476,7 @@ footer small { color: var(--text-dim); }
 /* === SCROLL TOP === */
 .scroll-top {
     position: fixed; bottom: 160px; right: 24px;
-    width: 42px; height: 42px;
+    width: 44px; height: 44px;
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: 50%; color: var(--accent);
     font-size: 1.1rem; display: none;

@@ -26,7 +26,7 @@
     bc:   { label: 'Baterie compatibilă', note: 'Aftermarket. Poate afișa „baterie necunoscută”.', icon: 'bi-battery-half', band: 'fast', group: 'battery' },
     bk:   { label: 'Baterie calibrabilă', note: 'Afișează „Sănătate 100%” în Settings.', icon: 'bi-battery-full', band: 'fast', group: 'battery' },
     bo:   { label: 'Baterie Original SP',  note: 'Piesă nouă Samsung (Service Pack).', icon: 'bi-battery-full', band: 'fast', group: 'battery' },
-    port: { label: 'Port încărcare',       note: 'Lightning / USB-C.', icon: 'bi-usb-c',  band: 'fast' },
+    port: { label: 'Port încărcare',       note: 'Mufa de încărcare / contact slab.', icon: 'bi-usb-c',  band: 'fast' },
     cam:  { label: 'Cameră',               note: 'Cameră principală / geam cameră.', icon: 'bi-camera', band: 'fast' },
     cap:  { label: 'Capac spate',          note: 'Sticlă spate / carcasă.', icon: 'bi-square', band: 'day' }
   };

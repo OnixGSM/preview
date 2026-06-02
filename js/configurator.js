@@ -200,7 +200,7 @@
     setStep(1); resetRightIdle(); syncHash();
   }
   function resetRightIdle() {
-    elLines.innerHTML = '<p class="text-muted small mb-0">Alege marca și modelul pentru o estimare instant.</p>';
+    elLines.innerHTML = '<p class="text-muted small mb-0">' + (state.brand ? 'Alege modelul și piesele pentru o estimare instant.' : 'Alege marca și modelul pentru o estimare instant.') + '</p>';
     elExpressRow.hidden = true; elTotalRow.hidden = true; elDisclaimer.hidden = true; elActions.hidden = true;
     lastTotal = 0; setSheet(false); if (elDevice) elDevice.style.display = ''; updateDevice();
   }
