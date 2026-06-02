@@ -458,6 +458,8 @@ html[data-theme="dark"] #hero .lead strong { opacity: 1; color: #fff; }
     z-index: 998; border-top: 1px solid var(--border);
 }
 .sticky-cta .btn { border-radius: 12px; font-size: 1rem; padding: 12px; }
+.btn-wa { background: #25d366; color: #fff; border: none; }
+.btn-wa:hover, .btn-wa:focus { background: #1ebe5a; color: #fff; }
 
 /* Cookie banner open: lift the bottom-fixed bars above it (CTA must stay tappable). */
 body.cookie-open .sticky-cta { bottom: var(--cookie-h, 92px); }

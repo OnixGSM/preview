@@ -1,3 +1,3 @@
 # OnixGSM — Preview
 
-Preview intern (NU este onixgsm.ro live). Fără CNAME. URL: https://onixgsm.github.io/preview/
+NU este onixgsm.ro live. Fără CNAME. https://onixgsm.github.io/preview/

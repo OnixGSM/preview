@@ -449,7 +449,7 @@
       if (!hashBrand) {
         const params = new URLSearchParams(location.search);
         const bp = params.get('brand') || root.getAttribute('data-default-brand');
-        if (bp) { const br = findBrand('phone', bp); if (br) { selectCategory('phone'); selectPhoneBrand(br); return; } }
+        if (bp) { const br = findBrand('phone', bp); if (br) { selectCategory('phone'); selectPhoneBrand(br); var mp = params.get('model'); if (mp) { try { elModel.value = mp; selectModel(mp); } catch (e3) {} } return; } }
       }
     } catch (e) {}
     try {

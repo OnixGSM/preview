@@ -405,3 +405,27 @@ document.querySelectorAll('.service-expand-btn').forEach(btn => {
             .finally(function () { if (btn) { btn.disabled = false; btn.innerHTML = orig; } });
     });
 })();
+
+// EVENT TRACKING (provider-agnostic, cookieless-ready). No-op until an analytics
+// provider is present (GoatCounter / Plausible / gtag); events queue on window.onixEvents.
+(function () {
+    window.onixEvents = window.onixEvents || [];
+    window.onixTrack = function (name, meta) {
+        if (!name) return;
+        try {
+            window.onixEvents.push({ e: name, m: meta || null, t: Date.now(), p: location.pathname });
+            if (window.goatcounter && window.goatcounter.count) { window.goatcounter.count({ path: 'ev/' + name, title: name, event: true }); }
+            else if (typeof window.plausible === 'function') { window.plausible(name, meta ? { props: meta } : undefined); }
+            else if (typeof window.gtag === 'function') { window.gtag('event', name, meta || {}); }
+        } catch (e) {}
+    };
+    function ctx(el) { var s = el.closest('section[id],[data-ev-ctx]'); return s ? (s.id || s.getAttribute('data-ev-ctx')) : 'page'; }
+    document.addEventListener('click', function (ev) {
+        var a = ev.target.closest('a,button'); if (!a) return;
+        if (a.dataset && a.dataset.ev) { window.onixTrack(a.dataset.ev); return; }
+        var href = a.getAttribute('href') || '';
+        if (href.indexOf('wa.me') !== -1 || href.indexOf('api.whatsapp') !== -1) window.onixTrack('whatsapp', { ctx: ctx(a) });
+        else if (href.indexOf('tel:') === 0) window.onixTrack('call', { ctx: ctx(a) });
+        else if (href.indexOf('mailto:') === 0) window.onixTrack('email', { ctx: ctx(a) });
+    }, true);
+})();

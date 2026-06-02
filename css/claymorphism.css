@@ -457,6 +457,13 @@ html[data-theme="dark"] .clay-page #mainNav .dropdown-divider { border-color: rg
 .clay-page .clay-footer .footer-bottom { border-top: 1px solid rgba(43,42,58,.1); margin-top: 1.6rem; padding-top: 1rem; }
 /* Mobile: larger tap area for footer nav links (>= ~40px) without enlarging text. */
 @media (max-width: 767.98px) { .clay-page .clay-footer li a { display: inline-block; padding: .32rem 0; } }
+
+/* Breadcrumb trail on generated pages */
+.clay-page .breadcrumb-trail { list-style: none; display: flex; flex-wrap: wrap; gap: .45rem; padding: 0; margin: 0; }
+.clay-page .breadcrumb-trail a { color: var(--clay-ink-soft); text-decoration: none; }
+.clay-page .breadcrumb-trail a:hover { color: var(--clay-accent-text); }
+.clay-page .breadcrumb-trail .sep { opacity: .45; }
+.clay-page .breadcrumb-trail [aria-current] { color: var(--clay-ink); font-weight: 600; }
 .clay-page .clay-footer .footer-bottom a { font-size: 1.05rem; }
 .clay-page .anpc-badges { display: flex; gap: .45rem; flex-wrap: wrap; margin-top: .7rem; }
 .clay-page .anpc-badges a { display: inline-flex; align-items: center; gap: .35rem; background: var(--clay-surface); border-radius: 8px; padding: .35rem .6rem; box-shadow: var(--clay-shadow-sm); font-size: .72rem !important; font-weight: 700; }
