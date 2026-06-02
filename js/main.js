@@ -429,3 +429,10 @@ document.querySelectorAll('.service-expand-btn').forEach(btn => {
         else if (href.indexOf('mailto:') === 0) window.onixTrack('email', { ctx: ctx(a) });
     }, true);
 })();
+
+// SERVICE WORKER (offline support + faster repeat loads). Relative path = works on /preview/ and root.
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function () {});
+    });
+}
