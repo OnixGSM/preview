@@ -404,13 +404,13 @@
     const L = ['Bună ziua! Doresc o estimare pentru reparație:', '', 'Dispozitiv: ' + state.model, '', 'Reparații selectate:'];
     items.forEach(it => L.push('- ' + it.label + ': ' + (it.from ? 'de la ' : '') + fmt(it.price) + ' lei'));
     if (state.express) L.push('- Serviciu Express: +99 lei');
-    L.push('', 'Total estimativ: ' + (approx ? 'de la ' : '~') + fmt(total) + ' lei (TVA inclus)', 'Trimis din configuratorul onixgsm.ro');
+    L.push('', 'Total estimativ: ' + (approx ? 'de la ' : '~') + fmt(total) + ' lei (TVA inclus)', '', '📷 Pot atașa o poză cu defectul.', 'Trimis din configuratorul onixgsm.ro');
     return L.join('\n');
   }
   function buildAskMessage(items) {
     const L = ['Bună ziua! Doresc o ofertă de preț pentru reparație:', '', 'Dispozitiv: ' + state.model, '', 'Ce aș vrea reparat:'];
     if (items.length) items.forEach(it => L.push('- ' + it.label)); else L.push('- (vă spun eu la fața locului)');
-    L.push('', 'Vă rog un preț și o durată estimativă. (Trimis din configuratorul onixgsm.ro)');
+    L.push('', 'Vă rog un preț și o durată estimativă.', '', '📷 Pot atașa o poză cu defectul.', '(Trimis din configuratorul onixgsm.ro)');
     return L.join('\n');
   }
   function currentText() {
@@ -521,6 +521,7 @@
   // ----- init -----
   renderTabs();
   setupDeviceTap();
+  if (elActions) { var ph = document.createElement('p'); ph.className = 'cfg-photo-hint small text-muted mt-2 mb-0'; ph.innerHTML = '<i class="bi bi-camera"></i> Poți atașa o poză cu defectul direct în WhatsApp — ne ajută la diagnostic.'; elActions.appendChild(ph); }
   selectCategory('phone'); // categorie implicită
   restore();
   autoPreselect();

@@ -460,6 +460,10 @@ html[data-theme="dark"] #hero .lead strong { opacity: 1; color: #fff; }
 .sticky-cta .btn { border-radius: 12px; font-size: 1rem; padding: 12px; }
 .btn-wa { background: #25d366; color: #fff; border: none; }
 .btn-wa:hover, .btn-wa:focus { background: #1ebe5a; color: #fff; }
+/* Global keyboard-focus safety net (covers chips, native controls, anything not clay-scoped) */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible, .clay-chip:focus-visible {
+    outline: 3px solid var(--accent, #CA8A04); outline-offset: 2px;
+}
 
 /* Cookie banner open: lift the bottom-fixed bars above it (CTA must stay tappable). */
 body.cookie-open .sticky-cta { bottom: var(--cookie-h, 92px); }
