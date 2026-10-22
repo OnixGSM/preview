@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'sha256-9FIujJDUysdVklPryo3U23JVJc2Eqf2VnROmrg0NqV0=' 'sha256-PHSgNdJZWM639wL+018WaeXMk14ETm3mtzYRzHzSXZA='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.web3forms.com; frame-src https://maps.google.com https://www.google.com; form-action 'self' https://api.web3forms.com; object-src 'none'; base-uri 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>OnixGSM — Reparații, Telefoane & Accesorii | Florești, Cluj</title>
+    <meta name="description" content="Service GSM în Florești, Cluj: reparații telefoane, telefoane noi și second-hand, accesorii. Diagnostic gratuit și garanție până la 24 de luni.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="OnixGSM — Reparații, Telefoane & Accesorii | Florești, Cluj">
+    <meta property="og:description" content="Reparații telefoane, telefoane noi & SH, accesorii. Diagnostic gratuit, garanție până la 24 luni. Florești, ROKA Premium Center.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://onixgsm.ro">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:image" content="https://onixgsm.ro/assets/img/hero-onix.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="OnixGSM — Reparații, Telefoane & Accesorii | Florești, Cluj">
+    <meta name="twitter:description" content="Reparații telefoane, telefoane noi & SH, accesorii. Diagnostic gratuit, garanție până la 24 luni. Florești, ROKA Premium Center.">
+    <meta name="twitter:image" content="https://onixgsm.ro/assets/img/hero-onix.jpg">
+    <link rel="canonical" href="https://onixgsm.ro/">
+    <link rel="icon" type="image/png" href="assets/img/icon-192.png">
+    <link rel="preload" as="image" href="assets/img/hero-bg.webp" fetchpriority="high">
+    <link href="assets/css/bootstrap.min.css?v=a54ef3ef" rel="stylesheet">
+    <link href="assets/css/bootstrap-icons.min.css?v=7ae6c2a1" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=1d4b1762">
+    <link rel="stylesheet" href="css/theme.css?v=3a4a28c9">
+    <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <script>(function(){var d=document,h=d.documentElement;try{var t=localStorage.getItem('onix-theme');if(t)h.setAttribute('data-theme',t)}catch(e){}h.classList.add('js');d.addEventListener('error',function(e){var i=e.target;if(!i||i.tagName!=='IMG'||!i.hasAttribute('data-hide-onerror'))return;var s=i.getAttribute('data-hide-onerror'),n=s?i.closest(s):i;if(n)n.style.display='none'},true)})()</script>
+    <script>(function(){try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('anim')}catch(e){}})()</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://onixgsm.ro/#business","name":"OnixGSM","url":"https://onixgsm.ro","image":"https://onixgsm.ro/assets/img/hero-onix.jpg","priceRange":"$$","telephone":"+40750605905","address":{"@type":"PostalAddress","streetAddress":"Str. Eroilor 17, ROKA Premium Center","addressLocality":"Florești","addressRegion":"Cluj","postalCode":"407280","addressCountry":"RO"},"geo":{"@type":"GeoCoordinates","latitude":"46.7388491","longitude":"23.4844209"},"openingHours":["Mo-Fr 10:00-20:00"],"paymentAccepted":"Numerar, Card, Transfer bancar, Ramburs","currenciesAccepted":"RON"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Cât durează o reparație?","acceptedAnswer":{"@type":"Answer","text":"Reparațiile standard sunt gata în aceeași zi. Express (+99 lei): 30 de minute. Microsoldering: 3-14 zile lucrătoare."}},{"@type":"Question","name":"Folosiți piese originale sau compatibile?","acceptedAnswer":{"@type":"Answer","text":"Ambele. Îți arătăm diferențele de calitate și preț și alegi tu."}},{"@type":"Question","name":"Ce garanție oferiți?","acceptedAnswer":{"@type":"Answer","text":"Până la 24 de luni, în funcție de reparație și piese. Totul scris pe certificatul de garanție."}},{"@type":"Question","name":"Trebuie programare?","acceptedAnswer":{"@type":"Answer","text":"Nu. Vino direct, luni-vineri 10:00-20:00. Pentru microsoldering, sună înainte."}},{"@type":"Question","name":"Diagnosticul costă?","acceptedAnswer":{"@type":"Answer","text":"Nu, diagnosticul este gratuit. Repari sau nu, diagnosticul e pe noi."}}]}</script>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#211E2E">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+</head>
+<body class="clay-page">
+    <a class="skip-link" href="#continut">Sari la conținut</a>
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img decoding="async" src="assets/img/logo-onix.webp" alt="OnixGSM" class="navbar-logo"></a>
+            <span class="status-badge" id="statusBadge"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Meniu"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="service.html" id="navRep" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reparații</a>
+                        <ul class="dropdown-menu" aria-labelledby="navRep">
+                            <li><a class="dropdown-item" href="reparatii-iphone.html">Reparații iPhone</a></li>
+                            <li><a class="dropdown-item" href="reparatii-samsung.html">Reparații Samsung</a></li>
+                            <li><a class="dropdown-item" href="microsoldering-cluj.html">Microsoldering</a></li>
+                            <li><a class="dropdown-item" href="curier.html">Reparații prin curier</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="service.html#configurator">Configurator preț</a></li>
+                            <li><a class="dropdown-item" href="service.html">Toate prețurile</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="telefoane.html">Telefoane</a></li>
+                    <li class="nav-item"><a class="nav-link" href="accesorii.html">Accesorii</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="garantie.html" id="navGhid" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ghiduri</a>
+                        <ul class="dropdown-menu" aria-labelledby="navGhid">
+                            <li><a class="dropdown-item" href="blog-telefon-cazut-in-apa.html">Telefon căzut în apă</a></li>
+                            <li><a class="dropdown-item" href="blog-piese-originale-vs-compatibile.html">Piese originale vs. compatibile</a></li>
+                            <li><a class="dropdown-item" href="blog-ce-este-microsoldering.html">Ce este microsoldering</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="garantie.html">Garanție & retur</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <a class="nav-search ms-lg-2" href="cauta.html" aria-label="Caută pe site" title="Caută pe site"><i class="bi bi-search"></i></a>
+            <button class="theme-toggle ms-lg-2" aria-label="Schimbă tema" title="Schimbă tema">
+                    <i class="bi bi-sun-fill theme-icon-light"></i>
+                    <i class="bi bi-moon-stars-fill theme-icon-dark"></i>
+                </button>
+                <a href="tel:0750605905" class="btn btn-accent ms-lg-3"><i class="bi bi-telephone-fill"></i> Sună Acum</a>
+            </div>
+        </div>
+    </nav>
+<main id="continut" tabindex="-1" data-pagefind-body>
+
+    <!-- HERO -->
+    <section class="hero" id="hero" data-anim="hero">
+        <div class="container hero-grid">
+            <div class="hero-copy">
+                <p class="hero-eyebrow"><span class="hero-dot"></span> Service GSM și microsoldering, Florești</p>
+                <h1 class="hero-title">Reparăm telefonul. <span class="hero-accent" id="heroTyping">Prețul îl vezi înainte.</span></h1>
+                <p class="hero-sub">Diagnostic gratuit la ROKA Premium Center, garanție scrisă până la 24 de luni. Reparăm pe placă ce alte service-uri refuză.</p>
+                <div class="hero-cta">
+                    <a href="https://wa.me/40750605905?text=Bun%C4%83%2C%20am%20nevoie%20de%20o%20repara%C8%9Bie" class="btn btn-accent" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> Scrie pe WhatsApp</a>
+                    <a href="#configurator" class="btn btn-outline-light"><i class="bi bi-sliders2"></i> Vezi prețul pe modelul tău</a>
+                </div>
+                <ul class="hero-trust">
+                    <li><i class="bi bi-geo-alt-fill"></i> Str. Eroilor 17, Florești</li>
+                    <li><i class="bi bi-clock"></i> L-V 10:00 - 20:00</li>
+                    <li><i class="bi bi-truck"></i> Curier din toată țara</li>
+                </ul>
+            </div>
+            <div class="hero-stage">
+                <figure class="hero-photo">
+                    <img class="parallax-slow" decoding="async" src="assets/img/microsoldering.webp" alt="Reparație pe placa de bază, sub microscop, la OnixGSM" loading="eager" fetchpriority="high" width="1200" height="800" data-hide-onerror=".hero-photo">
+                </figure>
+                <a href="#configurator" class="hero-prices" aria-label="Prețuri orientative, vezi prețul exact pe model">
+                    <header><span>Prețuri orientative, TVA inclus</span><span>piesă + manoperă</span></header>
+                    <div class="row-p"><b>Ecran iPhone</b><span>de la <strong data-anim="count">199</strong> lei</span></div>
+                    <div class="row-p"><b>Baterie</b><span>de la <strong data-anim="count">99</strong> lei</span></div>
+                    <div class="row-p"><b>Port de încărcare</b><span>de la <strong data-anim="count">109</strong> lei</span></div>
+                    <div class="row-p"><b>Microsoldering</b><span>de la <strong data-anim="count">299</strong> lei</span></div>
+                    <span class="more">Prețul exact pe modelul tău <i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDURI REPARATE -->
+    <section class="brand-strip" aria-label="Mărci pe care le reparăm">
+        <div class="marquee">
+            <ul class="marquee-track"><li><img src="assets/img/brands/acer.svg" alt="Acer" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/apple.svg" alt="Apple" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/asus.svg" alt="Asus" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/dell.svg" alt="Dell" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/google.svg" alt="Google" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/honor.svg" alt="Honor" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/hp.svg" alt="HP" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/huawei.svg" alt="Huawei" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/lenovo.svg" alt="Lenovo" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/lg.svg" alt="LG" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/microsoft.svg" alt="Microsoft" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/motorola.svg" alt="Motorola" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/msi.svg" alt="MSI" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/nokia.svg" alt="Nokia" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/oneplus.svg" alt="OnePlus" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/oppo.svg" alt="Oppo" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/razer.svg" alt="Razer" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/redmi.svg" alt="Redmi" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/samsung.svg" alt="Samsung" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/vivo.svg" alt="Vivo" width="24" height="24" loading="lazy" decoding="async"></li><li><img src="assets/img/brands/xiaomi.svg" alt="Xiaomi" width="24" height="24" loading="lazy" decoding="async"></li></ul>
+        </div>
+    </section>
+
+    <!-- PE DEFECT -->
+    <section class="clay-section py-5">
+        <div class="container">
+            <div class="mb-5">
+                <h2 class="display-6" data-anim="title">Ce a pățit telefonul tău?</h2>
+                <p class="clay-muted">Alege problema. Vezi un preț orientativ pe loc și trimiți cererea pe WhatsApp dintr-un click.</p>
+            </div>
+            <ul class="defect-list" data-anim="items">
+                <li><a href="?defect=ecran#configurator"><i class="bi bi-phone-fill"></i><span class="defect-name">Ecran spart</span><span class="defect-price">de la 199 lei</span></a></li>
+                <li><a href="?defect=baterie#configurator"><i class="bi bi-battery-half"></i><span class="defect-name">Nu ține bateria</span><span class="defect-price">de la 99 lei</span></a></li>
+                <li><a href="?defect=incarcare#configurator"><i class="bi bi-plug-fill"></i><span class="defect-name">Nu mai încarcă</span><span class="defect-price">de la 109 lei</span></a></li>
+                <li><a href="?defect=nu-porneste#configurator"><i class="bi bi-x-octagon-fill"></i><span class="defect-name">Nu pornește</span><span class="defect-price">verificăm placa</span></a></li>
+                <li><a href="blog-telefon-cazut-in-apa.html"><i class="bi bi-droplet-fill"></i><span class="defect-name">A căzut în apă</span><span class="defect-price">de la 149 lei</span></a></li>
+                <li><a href="microsoldering-cluj.html"><i class="bi bi-cpu-fill"></i><span class="defect-name">Microsoldering</span><span class="defect-price">de la 299 lei</span></a></li>
+            </ul>
+            <div class="d-flex flex-wrap gap-2 mt-4 reveal">
+                <a href="service.html" class="btn btn-outline-light"><i class="bi bi-list-check"></i> Toate prețurile</a>
+                <a href="curier.html" class="btn btn-outline-light"><i class="bi bi-truck"></i> Reparații prin curier</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFIGURATOR -->
+    <section class="clay-section py-5 clay-section--alt" id="configurator">
+        <div class="container">
+            <div class="mb-5">
+                <h2 class="display-6" data-anim="title">Configurează-ți reparația</h2>
+                <p class="clay-muted">Alege dispozitivul, bifează ce vrei să reparăm și vezi pe loc o estimare. O trimiți pe WhatsApp dintr-un click.</p>
+            </div>
+            <div class="cfg-tabs reveal" id="cfgTabs" role="tablist" aria-label="Categorie dispozitiv"></div>
+            <ol class="cfg-stepper reveal" id="cfgStepper">
+                <li class="cfg-stepper-item is-active" data-step="1"><span class="cfg-stepper-dot">1</span><span class="cfg-stepper-txt">Marca</span></li>
+                <li class="cfg-stepper-item" data-step="2"><span class="cfg-stepper-dot">2</span><span class="cfg-stepper-txt">Modelul</span></li>
+                <li class="cfg-stepper-item" data-step="3"><span class="cfg-stepper-dot">3</span><span class="cfg-stepper-txt">Reparații</span></li>
+            </ol>
+            <div class="cfg-wrap reveal" id="cfg" data-fallback="0">
+                <div class="row g-4">
+                    <div class="col-lg-7">
+                        <div class="cfg-hint mb-3" id="cfgDefectHint" role="status" hidden></div>
+                        <div class="cfg-step" id="cfgBrandStep">
+                            <span class="cfg-step-label">1 · Marca</span>
+                            <div class="cfg-brands" id="cfgBrands" role="group" aria-label="Alege marca"></div>
+                        </div>
+                        <div class="cfg-step" id="cfgModelStep" hidden>
+                            <span class="cfg-step-label">2 · Modelul</span>
+                            <input list="cfgModelList" id="cfgModel" class="form-control" placeholder="Caută modelul (ex: iPhone 14 Pro)" autocomplete="off" aria-label="Caută modelul" aria-describedby="cfgModelHint">
+                            <datalist id="cfgModelList"></datalist>
+                            <div class="cfg-hint mt-2" id="cfgModelHint" role="status" hidden><i class="bi bi-question-circle"></i> Nu găsești modelul? <a href="https://wa.me/40750605905?text=Bun%C4%83%2C%20am%20un%20model%20care%20nu%20apare%20%C3%AEn%20configurator" target="_blank" rel="noopener">Scrie-ne pe WhatsApp</a> și îți spunem prețul.</div>
+                            <div class="cfg-model-grid mt-3" id="cfgModelGrid" role="group" aria-label="Alege modelul" hidden></div>
+                        </div>
+                        <div class="cfg-step" id="cfgPartsStep" hidden>
+                            <span class="cfg-step-label">3 · Ce reparăm?</span>
+                            <div class="cfg-parts" id="cfgParts"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="cfg-side" id="cfgSide">
+                            <div class="cfg-device" id="cfgDevice">
+                                <svg viewBox="0 0 150 290" role="img" aria-label="Dispozitiv">
+                                    <rect class="cfg-dev-body" x="8" y="6" width="134" height="278" rx="26"/>
+                                    <rect class="cfg-dev-screen" x="18" y="16" width="114" height="258" rx="18"/>
+                                    <circle class="cfg-dev-cam" cx="75" cy="30" r="5"/>
+                                    <rect class="cfg-dev-batt" x="52" y="96" width="46" height="84" rx="9"/>
+                                    <rect class="cfg-dev-batt" x="66" y="90" width="18" height="7" rx="3"/>
+                                    <rect class="cfg-dev-chip" x="56" y="200" width="38" height="34" rx="4"/>
+                                    <rect class="cfg-dev-port" x="60" y="278" width="30" height="7" rx="3"/>
+                                </svg>
+                                <span class="cfg-device-name" id="cfgDeviceName"></span>
+                            </div>
+                            <div class="cfg-summary" id="cfgSummary">
+                                <h5 class="fw-700 mb-3"><i class="bi bi-receipt text-accent"></i> Estimarea ta</h5>
+                                <div id="cfgLines" class="cfg-lines" aria-live="polite"><p class="text-muted small mb-0">Alege modelul și piesele pentru o estimare instant.</p></div>
+                                <div class="cfg-express" id="cfgExpressRow" hidden>
+                                    <label class="cfg-check"><input type="checkbox" id="cfgExpress"> <span>Express <strong>+99 lei</strong> — gata în ~30 min dacă avem piesa pe stoc</span></label>
+                                </div>
+                                <div class="cfg-total" id="cfgTotalRow" hidden>
+                                    <span>Total estimativ</span>
+                                    <strong id="cfgTotal" aria-live="polite">0 lei</strong>
+                                </div>
+                                <p class="cfg-disclaimer small text-muted mb-0" id="cfgDisclaimer" hidden></p>
+                                <div class="cfg-actions mt-3" id="cfgActions" hidden>
+                                    <a id="cfgWa" class="btn btn-accent w-100 mb-2" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> Trimite pe WhatsApp</a>
+                                    <div class="d-flex gap-2">
+                                        <a href="tel:0750605905" class="btn btn-outline-light flex-fill btn-sm"><i class="bi bi-telephone-fill"></i> Sună</a>
+                                        <button type="button" class="btn btn-outline-light flex-fill btn-sm" id="cfgCopy"><i class="bi bi-clipboard"></i> Copiază</button>
+                                        <button type="button" class="btn btn-outline-light flex-fill btn-sm" id="cfgShare"><i class="bi bi-share"></i> Distribuie</button>
+                                    </div>
+                                </div>
+                                <div class="cfg-trust small mt-3">
+                                    <span><i class="bi bi-shield-check text-accent"></i> Garanție până la 24 luni</span>
+                                    <span><i class="bi bi-search text-accent"></i> Diagnostic gratuit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cfg-sheet" id="cfgSheet" aria-hidden="true">
+            <div class="cfg-sheet-info"><span class="cfg-sheet-label">Total estimativ</span><strong class="cfg-sheet-total" id="cfgSheetTotal">0 lei</strong></div>
+            <a id="cfgSheetWa" class="clay-btn clay-btn--primary" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> Trimite</a>
+        </div>
+    </section>
+
+    <!-- ASA LUCRAM -->
+    <section class="clay-section py-5" id="cum-lucram">
+        <div class="container">
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-5">
+                    <h2 class="display-6" data-anim="title">Fără surprize la final. Așa lucrăm de zece ani.</h2>
+                    <p class="clay-muted mt-3">Reparăm telefoane, laptopuri și tablete, vindem telefoane noi și second-hand verificate și ținem accesoriile de care ai nevoie. Iar pe placa de bază reparăm ce alte service-uri dau înapoi cu „nu se poate".</p>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <span class="clay-chip"><i class="bi bi-search"></i> Diagnostic gratuit</span>
+                        <span class="clay-chip"><i class="bi bi-shield-check"></i> Garanție până la 24 de luni</span>
+                        <span class="clay-chip"><i class="bi bi-cpu"></i> Microsoldering</span>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <ol class="steps" data-anim="items">
+                        <li><span class="steps-n">1</span><h3>Aduci sau trimiți telefonul</h3><p>Luni până vineri, 10:00 - 20:00, la ROKA Premium Center. Sau prin curier, din toată țara.</p></li>
+                        <li><span class="steps-n">2</span><h3>Diagnostic gratuit, preț pe loc</h3><p>Îți spunem exact ce are și cât costă, înainte să atingem ceva. Repari sau nu, verificarea e gratuită.</p></li>
+                        <li><span class="steps-n">3</span><h3>Reparație cu garanție scrisă</h3><p>Reparăm doar cu acordul tău. Pleci cu certificat de garanție, până la 24 de luni, și telefonul curățat.</p></li>
+                    </ol>
+                    <figure class="clay-imgwrap mt-4 mb-0" style="aspect-ratio:16/7"><img decoding="async" src="assets/img/workbench-tech.jpg" alt="Tehnician la bancul de lucru, cu telefonul deschis sub microscop" loading="lazy" data-hide-onerror width="1400" height="933"></figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAGAZIN -->
+    <section class="clay-section py-5 clay-section--alt" id="magazin">
+        <div class="container">
+            <div class="shop-split">
+                <a class="shop-lead" href="telefoane.html">
+                    <figure class="shop-lead-img"><img decoding="async" src="assets/img/hero-phones.webp" alt="Telefoane noi și second-hand pe tejghea" loading="lazy" data-hide-onerror width="1400" height="1050"></figure>
+                    <h3>Telefoane noi și second-hand</h3>
+                    <p>Verificate tehnic, IMEI curat, garanție. Cumpărăm și telefonul tău vechi, cu plata pe loc.</p>
+                    <span class="shop-more">Vezi telefoanele <i class="bi bi-arrow-right"></i></span>
+                </a>
+                <div class="shop-acc">
+                    <h3>Accesorii, cu montaj pe loc</h3>
+                    <p class="clay-muted">Folia ți-o aplicăm gratuit, fără bule. Prețuri orientative, TVA inclus.</p>
+                    <div class="shop-grid" data-anim="items">
+                        <a class="shop-tile" href="accesorii.html"><figure><img decoding="async" src="assets/img/acc-huse.jpg" alt="Huse de telefon" loading="lazy" data-hide-onerror width="724" height="600"></figure><span class="shop-name">Huse</span><span class="shop-price">de la 45 lei</span></a>
+                        <a class="shop-tile" href="accesorii.html"><figure><img decoding="async" src="assets/img/acc-folii.jpg" alt="Folii de protecție" loading="lazy" data-hide-onerror width="701" height="600"></figure><span class="shop-name">Folii de protecție</span><span class="shop-price">de la 45 lei</span></a>
+                        <a class="shop-tile" href="accesorii.html"><figure><img decoding="async" src="assets/img/acc-incarcator.jpg" alt="Încărcătoare" loading="lazy" data-hide-onerror width="612" height="600"></figure><span class="shop-name">Încărcătoare</span><span class="shop-price">de la 49 lei</span></a>
+                        <a class="shop-tile" href="accesorii.html"><figure><img decoding="async" src="assets/img/acc-cabluri.jpg" alt="Cabluri de date" loading="lazy" data-hide-onerror width="551" height="600"></figure><span class="shop-name">Cabluri</span><span class="shop-price">de la 29 lei</span></a>
+                        <a class="shop-tile" href="accesorii.html"><figure><img decoding="async" src="assets/img/acc-casti.jpg" alt="Căști" loading="lazy" data-hide-onerror width="724" height="600"></figure><span class="shop-name">Căști</span><span class="shop-price">de la 40 lei</span></a>
+                        <a class="shop-tile" href="accesorii.html"><figure><img decoding="async" src="assets/img/acc-powerbank.jpg" alt="Powerbank-uri" loading="lazy" data-hide-onerror width="701" height="600"></figure><span class="shop-name">Powerbank</span><span class="shop-price">de la 69 lei</span></a>
+                    </div>
+                    <a href="accesorii.html" class="btn btn-outline-light mt-4"><i class="bi bi-bag"></i> Toate accesoriile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GHIDURI -->
+    <section class="clay-section py-5" id="ghiduri">
+        <div class="container">
+            <div class="mb-4">
+                <h2 class="display-6" data-anim="title">Citește înainte să vii</h2>
+                <p class="clay-muted">Ce faci în primele minute, ce piese să alegi și când chiar merită reparat.</p>
+            </div>
+            <div class="guide-grid" data-anim="items">
+                <a class="guide-card" href="blog-telefon-cazut-in-apa.html">
+                    <figure><img decoding="async" src="assets/img/rep-microsoldering.jpg" alt="Curățarea plăcii după contact cu lichid" loading="lazy" data-hide-onerror width="749" height="600"></figure>
+                    <h3>Telefonul a căzut în apă?</h3>
+                    <p>7 pași critici în primele minute și ce NU trebuie să faci.</p>
+                    <span class="shop-more">Citește <i class="bi bi-arrow-right"></i></span>
+                </a>
+                <a class="guide-card" href="blog-piese-originale-vs-compatibile.html">
+                    <figure><img decoding="async" src="assets/img/rep-display.jpg" alt="Display demontat de pe telefon" loading="lazy" data-hide-onerror width="741" height="600"></figure>
+                    <h3>Originale vs. compatibile</h3>
+                    <p>Ce să alegi, cum diferă la folosire și cât costă fiecare.</p>
+                    <span class="shop-more">Citește <i class="bi bi-arrow-right"></i></span>
+                </a>
+                <a class="guide-card" href="blog-ce-este-microsoldering.html">
+                    <figure><img decoding="async" src="assets/img/microsolder-2.jpg" alt="Tehnician lucrând la microscop pe placa de bază" loading="lazy" data-hide-onerror width="1000" height="667"></figure>
+                    <h3>Ce este microsoldering-ul?</h3>
+                    <p>Cum salvăm telefoane pe care alte service-uri le dau pierdute.</p>
+                    <span class="shop-more">Citește <i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+            <ul class="guide-list mt-4">
+                <li><a href="merita-reparat.html"><span>Merită reparat sau cumperi altul?</span><i class="bi bi-arrow-right"></i></a></li>
+                <li><a href="repara-vs-abonament.html"><span>Repari, sau iei telefon „pe 1 leu" cu abonament?</span><i class="bi bi-arrow-right"></i></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="clay-section py-5 clay-section--alt">
+        <div class="container">
+            <div class="mb-5"><h2 class="display-6" data-anim="title">Întrebări frecvente</h2></div>
+            <div class="row justify-content-center"><div class="col-lg-8">
+                <div class="accordion" id="faqAccordion" data-anim="items">
+                    <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Cât durează?</button></h3><div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Standard: <strong>gata în aceeași zi</strong>. Express (+99 lei): 30 minute. Microsoldering: <strong>3-14 zile lucrătoare</strong>.</div></div></div>
+                    <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Piese originale sau compatibile?</button></h3><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Ambele. Îți arătăm diferențele de calitate și preț, alegi tu. <a href="blog-piese-originale-vs-compatibile.html">Ghid complet →</a></div></div></div>
+                    <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Ce garanție dați?</button></h3><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body"><strong>Până la 24 luni</strong>, depinde de reparație și piese. Detalii pe certificatul de garanție. <a href="garantie.html">Politica completă →</a></div></div></div>
+                    <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Trebuie programare?</button></h3><div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body"><strong>Nu.</strong> Vino direct, L-V 10-20. Pentru microsoldering, sună înainte.</div></div></div>
+                    <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Diagnosticul costă?</button></h3><div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body"><strong>Nu. Zero. Gratuit.</strong> Repari sau nu, diagnosticul e pe noi.</div></div></div>
+                </div>
+            </div></div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="clay-section py-5">
+        <div class="container">
+            <div class="mb-5"><h2 class="display-6" data-anim="title">Vino sau scrie-ne</h2></div>
+            <div class="row g-4" data-anim="items">
+                <div class="col-lg-5">
+                    <div class="clay-card p-4 mb-3">
+                        <h4 class="fw-bold mb-3"><i class="bi bi-geo-alt-fill text-accent"></i> Unde ne găsești</h4>
+                        <p class="clay-muted mb-1">Str. Eroilor 17, <strong>ROKA Premium Center</strong></p>
+                        <p class="clay-muted mb-3">Florești, jud. Cluj</p>
+                        <p class="mb-1"><a href="tel:0750605905" class="clay-textlink"><i class="bi bi-telephone-fill"></i> 0750 605 905</a></p>
+                        <p class="mb-1"><a href="https://wa.me/40750605905" target="_blank" rel="noopener" class="clay-textlink"><i class="bi bi-whatsapp"></i> WhatsApp</a></p>
+                        <p class="mb-1"><a href="mailto:contact@onixgsm.ro" class="clay-textlink"><i class="bi bi-envelope-fill"></i> contact@onixgsm.ro</a></p>
+                        <p class="mb-0 mt-3 clay-muted"><strong>L-V: 10:00 — 20:00</strong> | S-D: Închis</p>
+                    </div>
+                    <div class="d-flex gap-2 mb-3">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=46.7388491,23.4844209&travelmode=driving" target="_blank" rel="noopener" class="clay-btn clay-btn--mint flex-fill justify-content-center"><i class="bi bi-geo-alt-fill"></i> Maps</a>
+                        <a href="https://waze.com/ul?ll=46.7388491,23.4844209&navigate=yes" target="_blank" rel="noopener" class="clay-btn clay-btn--mint flex-fill justify-content-center"><i class="bi bi-cursor-fill"></i> Waze</a>
+                    </div>
+                    <iframe title="Hartă OnixGSM — Str. Eroilor 17, ROKA Premium Center, Florești" src="https://maps.google.com/maps?q=46.7388491,23.4844209&z=16&output=embed" width="100%" height="240" style="border:0;border-radius:16px" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+                <div class="col-lg-7">
+                    <form action="https://api.web3forms.com/submit" method="POST" class="clay-card p-4" enctype="multipart/form-data" id="contactForm">
+                        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
+                        <input type="hidden" name="subject" value="Mesaj nou de pe onixgsm.ro">
+                        <input type="hidden" name="from_name" value="OnixGSM Website">
+                        <input type="checkbox" name="botcheck" class="d-none" tabindex="-1" aria-hidden="true" autocomplete="off">
+                        <div class="row g-3">
+                            <div class="col-md-6"><label for="cf-name" class="visually-hidden">Nume</label><input type="text" class="form-control" id="cf-name" name="name" placeholder="Nume *" required></div>
+                            <div class="col-md-6"><label for="cf-phone" class="visually-hidden">Telefon</label><input type="tel" class="form-control" id="cf-phone" name="phone" placeholder="Telefon *" required></div>
+                            <div class="col-md-6">
+                                <label for="cf-service" class="visually-hidden">Ce ai nevoie</label>
+                                <select class="form-select" id="cf-service" name="service" required>
+                                    <option value="" selected disabled>Ce ai nevoie? *</option>
+                                    <option>Reparație telefon</option>
+                                    <option>Reparație laptop</option>
+                                    <option>Microsoldering</option>
+                                    <option>Cumpărare telefon</option>
+                                    <option>Accesorii</option>
+                                    <option>Altceva</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6"><label for="cf-device" class="visually-hidden">Model dispozitiv (opțional)</label><input type="text" class="form-control" id="cf-device" name="device" placeholder="Model (ex: iPhone 15 Pro)"></div>
+                            <div class="col-12"><label for="cf-message" class="visually-hidden">Descrierea problemei</label><textarea class="form-control" id="cf-message" name="message" rows="3" placeholder="Descrie pe scurt problema..." required></textarea></div>
+                            <div class="col-12"><label class="form-label small clay-muted" for="cf-attachment"><i class="bi bi-camera"></i> Poză (opțional)</label><input type="file" class="form-control" id="cf-attachment" name="attachment" accept="image/*"></div>
+                            <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" id="gdprConsent" required><label class="form-check-label small" for="gdprConsent">Sunt de acord cu <a href="confidentialitate.html" target="_blank" class="clay-textlink" rel="noopener">prelucrarea datelor</a>.</label></div></div>
+                            <div class="col-12"><button type="submit" class="clay-btn clay-btn--primary w-100 justify-content-center"><i class="bi bi-send-fill"></i> Trimite</button></div>
+                            <div class="col-12"><p id="contactFormResult" class="mb-0 small fw-600" role="status" aria-live="polite" hidden></p></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+    <footer class="clay-footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 footer-brand">
+                    <img decoding="async" loading="lazy" src="assets/img/logo-onix.webp" alt="OnixGSM" style="height:34px;border-radius:6px" class="mb-2"><br>
+                    <small>ONIX GSM S.R.L.<br>CUI 52504930 · J12/6979/2025<br>Str. Eroilor 17, ROKA Premium Center<br>Florești, jud. Cluj<br>L-V: 10:00–20:00 · TVA inclus</small>
+                    <div class="anpc-badges">
+                        <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener"><i class="bi bi-shield-check"></i> SAL-ANPC</a>
+                        <a href="tel:0219551"><i class="bi bi-telephone"></i> ANPC 021 9551</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h2 class="footer-col">Reparații</h2>
+                    <ul>
+                        <li><a href="reparatii-iphone.html">Reparații iPhone</a></li>
+                        <li><a href="reparatii-samsung.html">Reparații Samsung</a></li>
+                        <li><a href="microsoldering-cluj.html">Microsoldering</a></li>
+                        <li><a href="curier.html">Reparații prin curier</a></li>
+                        <li><a href="service.html#configurator">Configurator preț</a></li>
+                        <li><a href="service.html">Toate prețurile</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h2 class="footer-col">Magazin</h2>
+                    <ul>
+                        <li><a href="telefoane.html">Telefoane noi & SH</a></li>
+                        <li><a href="accesorii.html">Accesorii</a></li>
+                        <li><a href="index.html#contact">Cere ofertă</a></li>
+                    </ul>
+                    <h2 class="footer-col mt-3">Locații</h2>
+                    <ul>
+                        <li><a href="service-gsm-floresti.html">Service GSM Florești</a></li>
+                        <li><a href="reparatii-telefoane-cluj.html">Reparații Cluj</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h2 class="footer-col">Ghiduri</h2>
+                    <ul>
+                        <li><a href="blog-telefon-cazut-in-apa.html">Telefon căzut în apă</a></li>
+                        <li><a href="blog-piese-originale-vs-compatibile.html">Originale vs. compatibile</a></li>
+                        <li><a href="blog-ce-este-microsoldering.html">Ce e microsoldering</a></li>
+                    </ul>
+                    <h2 class="footer-col mt-3">Companie</h2>
+                    <ul>
+                        <li><a href="garantie.html">Garanție & retur</a></li>
+                        <li><a href="confidentialitate.html">Confidențialitate</a></li>
+                        <li><a href="termeni.html">Termeni</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <small>&copy; 2026 ONIX GSM S.R.L. — Prețuri cu TVA inclus.</small>
+                <div>
+                    <a href="tel:0750605905" class="me-3"><i class="bi bi-telephone-fill"></i> 0750 605 905</a>
+                    <a href="https://wa.me/40750605905" target="_blank" rel="noopener" class="me-3" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    <a href="mailto:contact@onixgsm.ro" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/40750605905?text=Bun%C4%83%2C%20am%20nevoie%20de%20o%20repara%C8%9Bie" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+    <div class="sticky-cta d-lg-none"><div class="d-flex gap-2"><a href="https://wa.me/40750605905?text=Bun%C4%83%2C%20am%20nevoie%20de%20o%20repara%C8%9Bie" target="_blank" rel="noopener" class="btn btn-wa flex-fill" data-ev="cta_whatsapp_sticky" aria-label="Scrie pe WhatsApp"><i class="bi bi-whatsapp"></i> WhatsApp</a><a href="tel:0750605905" class="btn btn-accent flex-fill" data-ev="cta_call_sticky" aria-label="Sună la 0750 605 905"><i class="bi bi-telephone-fill"></i> Sună</a></div></div>
+    <div class="cookie-notice" id="cookieNotice"><span>Acest site nu folosește cookie-uri de tracking. <a href="confidentialitate.html">Detalii</a></span><button id="cookieAccept">Am înțeles</button></div>
+    <button class="scroll-top" id="scrollTop" aria-label="Înapoi sus"><i class="bi bi-chevron-up"></i></button>
+
+    <script src="js/bs-lite.js?v=74164109"></script>
+    <script src="js/data/pricing.js?v=30e2be6d"></script>
+    <script src="js/data/models.js?v=4f530748"></script>
+    <script src="js/main.js?v=2022c717"></script>
+    <script src="js/search.js?v=98afef27"></script>
+    <script src="js/anim.js?v=c2605595"></script>
+    <script src="js/configurator.js?v=469b94af"></script>
+</body>
+</html>

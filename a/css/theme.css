@@ -1,0 +1,80 @@
+/* ============================================================================
+   OnixGSM — tema „Obsidian": grafit, precis, un singur accent (verdele WhatsApp,
+   dezaturat), cifre mono. Implicit închisă; varianta luminoasă e pentru comutator.
+   Fonturi self-hostate (Geist + Geist Mono), subsetate de .tools/build-fonts.sh.
+   ============================================================================ */
+@font-face { font-family: 'Geist'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('../assets/fonts/geist-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Geist'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('../assets/fonts/geist-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('../assets/fonts/geist-mono-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Geist Mono'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('../assets/fonts/geist-mono-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+:root, [data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1012; --bg-2: #141618; --surface: #17191c; --surface-2: #1f2226;
+  --line: #262a30; --line-2: #363b43;
+  --ink: #f1f0ea; --ink-2: #a9acb2; --ink-3: #868a90;
+  --accent: #2fb86a; --accent-ink: #07130c; --accent-soft: rgba(47,184,106,.14); --accent-text: #56d68a;
+  --wa: #25d366; --wa-ink: #04250f; --ok: #4ade80; --bad: #f87171;
+  --nav-bg: #0f1012; --nav-ink: #f1f0ea; --nav-ink-2: #a9acb2; --nav-line: #262a30; --nav-ok: #4ade80; --nav-bad: #f87171;
+  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --display-weight: 600; --display-tracking: -.035em;
+  --r: 8px; --r-sm: 6px; --r-lg: 12px; --r-btn: 8px;
+  --shadow-1: none; --shadow-2: 0 20px 50px rgba(0,0,0,.45);
+  --img-filter: saturate(.6) contrast(1.05) brightness(.85);
+  --logo-filter: brightness(0) invert(1) opacity(.5);
+  --logo-brand-filter: none;
+  --chevron-filter: invert(1) opacity(.7);
+  --select-arrow: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23a9acb2' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  --fs-body: 17px; --lh-body: 1.55;
+}
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f7f7f5; --bg-2: #efefec; --surface: #ffffff; --surface-2: #f2f2ef;
+  --line: #e2e2dd; --line-2: #c9c9c2;
+  --ink: #141518; --ink-2: #565a61; --ink-3: #656a72;
+  --accent: #15803d; --accent-ink: #ffffff; --accent-soft: rgba(21,128,61,.12); --accent-text: #187a43;
+  --ok: #15803d; --bad: #c0271a;
+  --nav-bg: #141518; --nav-ink: #f1f0ea; --nav-ink-2: #b4b7bc; --nav-line: #2a2d33;
+  --shadow-2: 0 20px 50px rgba(20,21,24,.14);
+  --img-filter: saturate(.75) contrast(1.02);
+  --logo-filter: brightness(0) opacity(.45);
+  --chevron-filter: opacity(.7);
+  --select-arrow: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23565a61' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* — accente de direcție — */
+.hero-eyebrow, .hero-trust, .clay-price, .cfg-step-label, .footer-col { font-family: var(--font-mono); }
+.hero-title .hero-accent { color: var(--ink); }
+.hero-title { font-weight: 600; }
+.hero-prices { font-family: var(--font-mono); }
+.hero-prices .row-p b { font-weight: 500; }
+.hero-prices .row-p strong { color: var(--ink); }
+.logo-mark { color: var(--accent); }
+
+/* Pașii de lucru: trei coloane despărțite de o singură linie, fără carduri. */
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.steps li { border-top: 1px solid var(--line-2); padding-top: 1rem; }
+.steps-n { display: block; font-family: var(--font-mono); font-size: .8rem; color: var(--accent-text); margin-bottom: .75rem; }
+.steps-n::before { content: 'Pasul '; }
+.steps h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: .4rem; }
+.steps p { color: var(--ink-2); font-size: .92rem; margin: 0; }
+@media (max-width: 767.98px) { .steps { grid-template-columns: 1fr; gap: 20px; } }
+
+/* Liste de prețuri și ghiduri: rânduri cu linie, cifre mono. */
+.price-list, .guide-list { list-style: none; padding: 0; margin: 0; }
+.price-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .7rem 0; border-top: 1px solid var(--line); }
+.price-list li a { color: var(--ink); font-weight: 500; }
+.price-list li span { font-family: var(--font-mono); color: var(--ink-2); font-size: .9rem; white-space: nowrap; }
+.price-list li strong { color: var(--ink); font-weight: 500; font-size: 1.1rem; }
+.guide-list li a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); color: var(--ink); font-weight: 500; font-size: 1.05rem; }
+.guide-list li:last-child a { border-bottom: 1px solid var(--line); }
+.guide-list li a i { color: var(--accent-text); flex: 0 0 auto; transition: transform var(--dur-micro) var(--ease-out); }
+.guide-list li a:hover { text-decoration: none; color: var(--accent-text); }
+.guide-list li a:hover i { transform: translateX(4px); }
+
+/* Antetul cu fotografie: fotografia devine grafit, textul rămâne alb. */
+.page-header--photo { background-color: var(--bg-2); }
+.page-header--photo::before { content: ''; position: absolute; inset: 0; background: rgba(15,16,18,.35); pointer-events: none; }
+.page-header--photo .container { position: relative; }

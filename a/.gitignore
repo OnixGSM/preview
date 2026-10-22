@@ -1,0 +1,43 @@
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+
+# CONFIDENTIAL - never push to GitHub
+_bmad-output/
+_bmad/
+.claude/
+PRETURI_REPARATII_2026.md
+OnixGSM_Analiza_Competitiva.md
+*.private.md
+*.private.md
+tabel-*.md
+PRETURI_PIESE_*.md
+comparatie-*.md
+preturi-interne.html
+admin-tool/
+STATUS.md
+variante/
+PROMPTURI-IMAGINI.md
+PLAN-*.md
+NEXT-STEPS.md
+clay-preview.html
+
+# Internal scratch / design / tooling (never publish)
+design-system/
+.tools/
+.agents/
+skills-lock.json
+_conversatii/
+MASTER-*.md
+_bmad-output/
+
+# Surse intacte pentru build (vezi .tools/build-css.js) — nu se publica
+assets/css/*.full.css
+assets/css/fonts/*.full.woff
+assets/css/fonts/*.full.woff2
+assets/fonts/*.full.woff2
+assets/js/*.full.js
+
+# Surse intacte pentru build-images (nu se publica)
+assets/img/_src/
